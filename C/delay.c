@@ -5,7 +5,7 @@
 **************************************/
 
 
-
+ /*
 void Delay10us()		//@11.0592MHz
 {
 	unsigned char i;
@@ -15,6 +15,7 @@ void Delay10us()		//@11.0592MHz
 	while (--i);
 }
 
+		 */
 void Delay40us()		//@11.0592MHz
 {
 	unsigned char i;

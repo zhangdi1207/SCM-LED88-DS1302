@@ -1,0 +1,70 @@
+C51 COMPILER V8.06   DELAY                                                                 01/30/2018 13:42:57 PAGE 1   
+
+
+C51 COMPILER V8.06, COMPILATION OF MODULE DELAY
+OBJECT MODULE PLACED IN delay.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE delay.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"head.h"
+   2          
+   3          /**************************************
+   4          —” ±XŒ¢√Î(STC15F104W@11.0592M)
+   5          **************************************/
+   6          
+   7          
+   8           /*
+   9          void Delay10us()                //@11.0592MHz
+  10          {
+  11                  unsigned char i;
+  12          
+  13                  _nop_();
+  14                  i = 25;
+  15                  while (--i);
+  16          }
+  17          
+  18                           */
+  19          void Delay40us()                //@11.0592MHz
+  20          {
+  21   1              unsigned char i;
+  22   1      
+  23   1              i = 108;
+  24   1              while (--i);
+  25   1      }
+  26          
+  27          
+  28          
+  29          void Delay1s()          //@11.0592MHz
+  30          {
+  31   1              unsigned char i, j, k;
+  32   1      
+  33   1              _nop_();
+  34   1              _nop_();
+  35   1              i = 43;
+  36   1              j = 6;
+  37   1              k = 203;
+  38   1              do
+  39   1              {
+  40   2                      do
+  41   2                      {
+  42   3                              while (--k);
+  43   3                      } while (--j);
+  44   2              } while (--i);
+  45   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     20    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+C51 COMPILER V8.06   DELAY                                                                 01/30/2018 13:42:57 PAGE 2   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

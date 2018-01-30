@@ -1,0 +1,134 @@
+C51 COMPILER V8.06   DS1302                                                                01/30/2018 13:42:57 PAGE 1   
+
+
+C51 COMPILER V8.06, COMPILATION OF MODULE DS1302
+OBJECT MODULE PLACED IN DS1302.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE DS1302.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"head.h"
+   2          
+   3          /*
+   4          //DS1302Êý¾ÝÏß
+   5          sbit DS1302RST = P1^3;
+   6          sbit DS1302CLK = P1^4;
+   7          sbit DS1302IO = P1^5;
+   8          
+   9          
+  10          #define WRITE_SEC        0X80
+  11          #define WRITE_MIN        0X82
+  12          #define WRITE_HOU        0X84
+  13          #define WRITE_DAT        0X86
+  14          #define WRITE_MON        0X88
+  15          #define WRITE_YEA        0X8C
+  16          
+  17          #define READ_SEC         0x81
+  18          #define READ_MIN         0x83
+  19          #define READ_HOU         0x85
+  20          #define READ_DAT         0x87
+  21          #define WRITE_PROTECT 0X8E
+  22          */
+  23          void write1302(uchar addr,uchar dat)
+  24          {
+  25   1              uchar i,temp;
+  26   1              DS1302RST=0;
+  27   1              DS1302CLK=0;
+  28   1              DS1302RST=1;
+  29   1              for(i=8;i>0;i--)
+  30   1              {
+  31   2                      DS1302CLK=0;
+  32   2                      temp=addr;
+  33   2                      DS1302IO=(bit)(temp&0x01);
+  34   2                      addr>>=1;
+  35   2                      DS1302CLK=1;
+  36   2              }
+  37   1              for(i=8;i>0;i--)
+  38   1              {
+  39   2                      DS1302CLK=0;
+  40   2                      temp=dat;
+  41   2                      DS1302IO=(bit)(temp&0x01);
+  42   2                      dat>>=1;
+  43   2                      DS1302CLK=1;
+  44   2              }
+  45   1      }
+  46          
+  47          uchar read1302(uchar addr)       //BCDÂë
+  48          {
+  49   1              uchar i,temp;
+  50   1              DS1302RST=0;
+  51   1              DS1302CLK=0;
+  52   1              DS1302RST=1;
+  53   1              for(i=8;i>0;i--)
+  54   1              {
+  55   2                      DS1302CLK=0;
+C51 COMPILER V8.06   DS1302                                                                01/30/2018 13:42:57 PAGE 2   
+
+  56   2                      temp=addr;
+  57   2                      DS1302IO=(bit)(temp&0x01);
+  58   2                      addr>>=1;
+  59   2                      DS1302CLK=1;
+  60   2              }
+  61   1              for(i=8;i>0;i--)
+  62   1              {
+  63   2                      temp= DS1302IO;
+  64   2                      DS1302CLK=1;
+  65   2                      temp>>=1;
+  66   2                      DS1302CLK=0;
+  67   2              }
+  68   1              DS1302RST=0;
+  69   1              /*
+  70   1              dat1=temp;
+  71   1              dat2=dat1/16;
+  72   1              dat1=dat1%16;
+  73   1              dat1=dat1+dat2*10;
+  74   1              return dat1;
+  75   1              */
+  76   1              return temp;
+  77   1      }
+  78          
+  79          //void initDS1302(uchar sec=OR_SEC,uchar min=OR_MIN,uchar hou=OR_HOU)
+  80          void initDS1302(uchar sec,uchar min,uchar hou)
+  81          {
+  82   1               write1302(WRITE_PROTECT,0X00);
+  83   1               write1302(WRITE_SEC,sec);
+  84   1               write1302(WRITE_MIN,min);
+  85   1               write1302(WRITE_HOU,hou);
+  86   1               write1302(WRITE_DAT,OR_DAT);
+  87   1               write1302(WRITE_MON,OR_MON);
+  88   1               write1302(WRITE_YEA,OR_YEA);
+  89   1      }
+  90          
+  91          
+  92          uint calMonth(uint month)
+  93          {
+  94   1              uchar date;
+  95   1              uchar sec,min,hou;
+  96   1              date = read1302(READ_DAT);
+  97   1              if(date == 0x31)
+  98   1              {
+  99   2                      month++;
+ 100   2                      flashMonthChange(month);
+ 101   2                      hou = read1302(READ_HOU);
+ 102   2                      min = read1302(READ_MIN);
+ 103   2                      sec = read1302(READ_SEC);
+ 104   2                      initDS1302(sec,min,hou);
+ 105   2              }
+ 106   1              return month;
+ 107   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    199    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+C51 COMPILER V8.06   DS1302                                                                01/30/2018 13:42:57 PAGE 3   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

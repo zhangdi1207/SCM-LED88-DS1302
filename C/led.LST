@@ -1,0 +1,111 @@
+C51 COMPILER V8.06   LED                                                                   01/30/2018 13:42:58 PAGE 1   
+
+
+C51 COMPILER V8.06, COMPILATION OF MODULE LED
+OBJECT MODULE PLACED IN led.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE led.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"head.h"
+   2          
+   3          
+   4          /*
+   5          //列74HC595的数据线
+   6          sbit ColumnData = P1^0;
+   7          sbit ColumnSHCP = P1^1;
+   8          sbit ColumnSTCP = P1^2;
+   9          
+  10          //行、列芯片的片选
+  11          sbit RCChannelData = P3^3;
+  12          sbit RCChannelSHCP = P3^6;
+  13          sbit RCChannelSTCP = P3^7;
+  14          
+  15          //行74HC138的数据
+  16          sbit RowData0 = P3^0;
+  17          sbit RowData1 = P3^1;
+  18          sbit RowData2 = P3^2;
+  19          
+  20          //行、列选择按钮
+  21          sbit RowSelect = P3^4;     
+  22          //sbit RowSelect = P5^4;                 //stc15f408as 16脚
+  23          sbit ColumnSelect = P1^7;
+  24          //sbit ColumnSelect = P5^5;              //stc15f408as 16脚
+  25          
+  26          */
+  27          
+  28          void chipSelect( uchar row,uchar column)
+  29          {
+  30   1              uchar i,dat;
+  31   1              dat= ~((0x01<<(row/8)) + (0x10<<(column/8))); 
+  32   1              for(i=0;i<8;i++)
+  33   1              {
+  34   2                      RCChannelSHCP=0;
+  35   2                      RCChannelData=dat&0x80;
+  36   2                      dat=dat<<1;
+  37   2                      RCChannelSHCP=1;
+  38   2              }
+  39   1              RCChannelSTCP=0;
+  40   1              nop();
+  41   1              nop();
+  42   1              RCChannelSTCP=1;
+  43   1      }
+  44          
+  45          void columnSelect(uchar dat)
+  46          {
+  47   1              uchar i;
+  48   1              for(i=0;i<8;i++)
+  49   1              {
+  50   2                      ColumnSHCP=0;
+  51   2                      ColumnData=dat&0x80;
+  52   2                      dat=dat<<1;
+  53   2                      ColumnSHCP=1;
+  54   2              }
+  55   1              ColumnSTCP=0;
+C51 COMPILER V8.06   LED                                                                   01/30/2018 13:42:58 PAGE 2   
+
+  56   1              nop();
+  57   1              nop();
+  58   1              ColumnSTCP=1;   
+  59   1      }
+  60          
+  61          void rowSelect(bit rowt,bit rows,bit rowf)
+  62          {
+  63   1              RowData0 = rowf;
+  64   1              RowData1 = rows;
+  65   1              RowData2 = rowt;
+  66   1      }
+  67          
+  68          
+  69          void show(uint i)
+  70          {
+  71   1              uchar row,column,columnData;
+  72   1              bit rowt,rows,rowf;
+  73   1              ColumnSelect=~ColumnSelect;
+  74   1              row= i/32;
+  75   1              column=i%32;
+  76   1              columnData=0x01<<(column%8);
+  77   1              rowf=(row%8)%2;
+  78   1              rows=((row%8)/2)%2;
+  79   1              rowt=((row%8)/4)%2;
+  80   1              chipSelect(row,column);
+  81   1              columnSelect(columnData);
+  82   1              rowSelect(rowt,rows,rowf);
+  83   1      
+  84   1              
+  85   1      
+  86   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    185    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----       6
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

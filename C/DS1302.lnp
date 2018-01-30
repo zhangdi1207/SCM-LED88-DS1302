@@ -1,0 +1,7 @@
+"main.obj",
+"delay.obj",
+"flashOpertion.obj",
+"DS1302.obj",
+"led.obj" 
+TO "DS1302" 
+RAMSIZE(256) 
