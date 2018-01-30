@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   LED                                                                   01/30/2018 13:42:58 PAGE 1   
+C51 COMPILER V8.06   LED                                                                   01/30/2018 16:32:39 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE LED
@@ -49,62 +49,59 @@ line level    source
   40   1              nop();
   41   1              nop();
   42   1              RCChannelSTCP=1;
-  43   1      }
-  44          
-  45          void columnSelect(uchar dat)
-  46          {
-  47   1              uchar i;
-  48   1              for(i=0;i<8;i++)
-  49   1              {
-  50   2                      ColumnSHCP=0;
-  51   2                      ColumnData=dat&0x80;
-  52   2                      dat=dat<<1;
-  53   2                      ColumnSHCP=1;
-  54   2              }
-  55   1              ColumnSTCP=0;
-C51 COMPILER V8.06   LED                                                                   01/30/2018 13:42:58 PAGE 2   
+  43   1      
+  44   1      }
+  45          
+  46          void columnSelect(uchar dat)
+  47          {
+  48   1              uchar i;
+  49   1              for(i=0;i<8;i++)
+  50   1              {
+  51   2                      ColumnSHCP=0;
+  52   2                      ColumnData=dat&0x80;
+  53   2                      dat=dat<<1;
+  54   2                      ColumnSHCP=1;
+  55   2              }
+C51 COMPILER V8.06   LED                                                                   01/30/2018 16:32:39 PAGE 2   
 
-  56   1              nop();
+  56   1              ColumnSTCP=0;
   57   1              nop();
-  58   1              ColumnSTCP=1;   
-  59   1      }
-  60          
-  61          void rowSelect(bit rowt,bit rows,bit rowf)
-  62          {
-  63   1              RowData0 = rowf;
-  64   1              RowData1 = rows;
-  65   1              RowData2 = rowt;
-  66   1      }
-  67          
-  68          
-  69          void show(uint i)
-  70          {
-  71   1              uchar row,column,columnData;
-  72   1              bit rowt,rows,rowf;
-  73   1              ColumnSelect=~ColumnSelect;
-  74   1              row= i/32;
-  75   1              column=i%32;
-  76   1              columnData=0x01<<(column%8);
-  77   1              rowf=(row%8)%2;
-  78   1              rows=((row%8)/2)%2;
-  79   1              rowt=((row%8)/4)%2;
+  58   1              nop();
+  59   1              ColumnSTCP=1;   
+  60   1      }
+  61          
+  62          void rowSelect(uchar signalrow)
+  63          {
+  64   1                      if(signalrow%8 == 0)
+  65   1                      P2=0x55;
+  66   1              else
+  67   1                      P2=0xaa;
+  68   1              P3 = (P3&0xf8)|signalrow;
+  69   1      }
+  70          
+  71          
+  72          void show(uint i)
+  73          {
+  74   1              uchar row,column,columnData,signalRow;
+  75   1              row= i/32;
+  76   1              signalRow=row%8;
+  77   1      
+  78   1              column=i%32;
+  79   1              columnData=0x01<<(column%8);
   80   1              chipSelect(row,column);
   81   1              columnSelect(columnData);
-  82   1              rowSelect(rowt,rows,rowf);
-  83   1      
-  84   1              
-  85   1      
-  86   1      }
+  82   1              rowSelect(signalRow);
+  83   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    185    ----
+   CODE SIZE        =    163    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
-   BIT SIZE         =   ----       6
+   BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 
 

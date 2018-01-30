@@ -19,17 +19,18 @@ void Delay10us()		//@11.0592MHz
 void Delay40us()		//@11.0592MHz
 {
 	unsigned char i;
-
+	WDT_CONTR = WDT;
 	i = 108;
 	while (--i);
 }
 
 
 
+
 void Delay1s()		//@11.0592MHz
 {
 	unsigned char i, j, k;
-
+	WDT_CONTR = WDT;
 	_nop_();
 	_nop_();
 	i = 43;

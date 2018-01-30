@@ -9,6 +9,7 @@ File 1,1,<.\main.c><main.c> 0x0
 File 1,1,<.\delay.c><delay.c> 0x0 
 File 1,5,<.\head.h><head.h> 0x0 
 File 1,1,<.\flashOpertion.c><flashOpertion.c> 0x0 
+File 1,1,<.\DS1302.c><DS1302.c> 0x0 
 
 
 Options 1,0,0  // Target 'Ä¿±ê 1'

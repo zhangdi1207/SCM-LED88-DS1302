@@ -40,6 +40,7 @@ void chipSelect( uchar row,uchar column)
 	nop();
 	nop();
 	RCChannelSTCP=1;
+
 }
 
 void columnSelect(uchar dat)
@@ -58,29 +59,25 @@ void columnSelect(uchar dat)
 	ColumnSTCP=1;	
 }
 
-void rowSelect(bit rowt,bit rows,bit rowf)
+void rowSelect(uchar signalrow)
 {
-	RowData0 = rowf;
-	RowData1 = rows;
-	RowData2 = rowt;
+		if(signalrow%8 == 0)
+		P2=0x55;
+	else
+		P2=0xaa;
+	P3 = (P3&0xf8)|signalrow;
 }
 
 
 void show(uint i)
 {
-	uchar row,column,columnData;
-	bit rowt,rows,rowf;
-	ColumnSelect=~ColumnSelect;
+	uchar row,column,columnData,signalRow;
 	row= i/32;
+	signalRow=row%8;
+
 	column=i%32;
 	columnData=0x01<<(column%8);
-	rowf=(row%8)%2;
-	rows=((row%8)/2)%2;
-	rowt=((row%8)/4)%2;
 	chipSelect(row,column);
 	columnSelect(columnData);
-	rowSelect(rowt,rows,rowf);
-
-	
-
+	rowSelect(signalRow);
 }

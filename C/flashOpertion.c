@@ -61,12 +61,12 @@ void IapEraseSector(uint addr)
 
 uint eepromInit()
 {
-	uint month;
+	uint month=1;
 	uchar mH,mL;
 	mH = IapReadByte(MONTH_DATA+1);
 	mL = IapReadByte(MONTH_DATA);
 	month = mH * 256 + mL;
-	if(month>1023)
+	if(month>1023 ||month ==0)
 	{
 		month=1;
 		IapEraseSector(MONTH_DATA);
