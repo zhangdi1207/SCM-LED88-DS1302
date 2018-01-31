@@ -36,7 +36,7 @@
 #define OR_MIN 00
 #define OR_SEC 00
 
-#define SHOWPRA 100 //显示多少次统计一下时间
+#define SHOWPRA 10//100 //显示多少次统计一下时间
 
 
 sfr AUXR        =   0x8e;

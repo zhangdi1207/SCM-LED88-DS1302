@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   MAIN                                                                  01/31/2018 17:29:57 PAGE 1   
+C51 COMPILER V8.06   MAIN                                                                  01/31/2018 17:46:39 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE MAIN
@@ -14,7 +14,7 @@ line level    source
    5   1              uint showCount = 0;
    6   1              uint monthCount = 1;
    7   1              WDT_CONTR = WDT;
-   8   1              Delay1s();
+   8   1              //Delay1s();
    9   1              //1302³õÊ¼»¯¡¢¶ÁÈ¡MONTH_DATAÎª×îÐÂµÄmonthÊý¾Ý£¬Ã¿´ÎÉè¶¨»òds1302¼ÆÊ±³¬¹ý30Ìì£¬(Éè¶¨monthÊý¾ÝÖÁflash»òÕß30Ì
              -ìºómonth+1´æÖÁflash)È»ºó³õÊ¼»¯da1302
   10   1              initDS1302(0,0,0);
@@ -29,15 +29,16 @@ line level    source
   19   3                              monthCount = calMonth(monthCount);
   20   3                              showCount=0;
   21   3                      }
-  22   2                      //monthCount=400;
-  23   2                      show(monthCount);
-  24   2                      
-  25   2              }
-  26   1      }
+  22   2                      monthCount=400;
+  23   2                      P2=~P2;
+  24   2                      show(monthCount);
+  25   2                      
+  26   2              }
+  27   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     72    ----
+   CODE SIZE        =     77    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
