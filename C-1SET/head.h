@@ -5,6 +5,7 @@
 #define nop() _nop_()
 #define uchar unsigned char
 #define uint unsigned int
+#define ul unsigned long
 #define CMD_IDLE    0               //空闲模式
 #define CMD_READ    1               //IAP字节读命令
 #define CMD_PROGRAM 2               //IAP字节编程命令
@@ -35,7 +36,7 @@
 #define OR_MIN 00
 #define OR_SEC 00
 
-#define SHOWPRA 10 //显示多少次统计一下时间
+#define SHOWPRA 100 //显示多少次统计一下时间
 
 
 sfr AUXR        =   0x8e;
@@ -48,31 +49,18 @@ sfr IAP_CONTR   =   0xC7;           //IAP控制寄存器
 sfr CLK_DIV = 0x97;					//时钟命令寄存器
 sfr WDT_CONTR = 0xc1;
 
-//列74HC595的数据线
-sbit ColumnData = P1^0;
-sbit ColumnSHCP = P1^1;
-sbit ColumnSTCP = P1^2;
+//行列数据74HC595
+sbit SHCP = P3^1;
+sbit STCP = P3^2;
+sbit ROWD = P3^3;
+sbit COLD = P3^4;
+
+
 
 //DS1302数据线
-sbit DS1302RST = P1^3;
-sbit DS1302CLK = P1^4;
-sbit DS1302IO = P1^5;
-
-//行、列芯片的片选
-sbit RCChannelData = P3^3;
-sbit RCChannelSHCP = P3^6;
-sbit RCChannelSTCP = P3^7;
-
-//行74HC138的数据
-sbit RowData0 = P3^0;
-sbit RowData1 = P3^1;
-sbit RowData2 = P3^2;
-
-//行、列选择按钮
-sbit RowSelect = P3^4;	   
-//sbit RowSelect = P5^4;		 //stc15f408as 16脚
-sbit ColumnSelect = P1^7;
-//sbit ColumnSelect = P5^5;		 //stc15f408as 16脚
+sbit DS1302RST = P1^0;
+sbit DS1302CLK = P1^1;
+sbit DS1302IO = P1^2;
 
 //所需函数
 void Delay40us();
@@ -84,29 +72,7 @@ void flashMonthChange(uint fmonth);
 void show(uint signalMonth);
 
 
-
-
 //所需数据
 
-
-/*
-void ledShow(int n);
-
-void DelayXus(uint n);
-void DelayNms(uint n);
-
-void DS18B20_Reset();
-void DS18B20_WriteByte(uchar dat);
-int readOneTemp(void);
-
-void eepromInit();
-void keyBoardTest();
-
-void outSet();
-
-extern int lowTemp;
-extern int highTemp;
-extern int historyTemp[];
-*/
 
 #endif

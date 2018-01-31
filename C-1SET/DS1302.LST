@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   DS1302                                                                01/31/2018 13:17:27 PAGE 1   
+C51 COMPILER V8.06   DS1302                                                                01/31/2018 17:29:58 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE DS1302
@@ -62,7 +62,7 @@ line level    source
   53   1              {
   54   2                      DS1302CLK=0;
   55   2                      DS1302IO=(bit)(addr&0x01);
-C51 COMPILER V8.06   DS1302                                                                01/31/2018 13:17:27 PAGE 2   
+C51 COMPILER V8.06   DS1302                                                                01/31/2018 17:29:58 PAGE 2   
 
   56   2                      DS1302CLK=1;
   57   2                      addr>>=1;
@@ -109,8 +109,8 @@ line level    source
   98   1              if(date == 0x31)
   99   1              {
  100   2                      month++;
- 101   2                      if(month > 1023)
- 102   2                              month-=1023;
+ 101   2                      if(month > 1024)
+ 102   2                              month-=1024;
  103   2                      flashMonthChange(month);
  104   2                      hou = read1302(READ_HOU);
  105   2                      min = read1302(READ_MIN);
@@ -126,7 +126,7 @@ line level    source
  115                  uchar date;
  116                  uchar sec,min,hou;
  117                  date = read1302(READ_SEC);
-C51 COMPILER V8.06   DS1302                                                                01/31/2018 13:17:27 PAGE 3   
+C51 COMPILER V8.06   DS1302                                                                01/31/2018 17:29:58 PAGE 3   
 
  118                  if(date == 0x05)
  119                  {
@@ -140,7 +140,7 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    224    ----
+   CODE SIZE        =    223    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

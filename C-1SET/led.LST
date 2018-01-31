@@ -1,0 +1,69 @@
+C51 COMPILER V8.06   LED                                                                   01/31/2018 17:29:58 PAGE 1   
+
+
+C51 COMPILER V8.06, COMPILATION OF MODULE LED
+OBJECT MODULE PLACED IN led.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE led.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include"head.h"
+   2          
+   3          
+   4          void select(ul row,ul column)
+   5          {
+   6   1              uchar i;
+   7   1              for(i=31;i>=0;i--)
+   8   1              {
+   9   2      
+  10   2                      ROWD=(row>>i)&0x01;
+  11   2                      COLD=(column>>i)&0x01;
+  12   2                      SHCP=0;
+  13   2                      nop();
+  14   2                      SHCP=1;
+  15   2              }
+  16   1              STCP=0;
+  17   1              nop();
+  18   1              nop();
+  19   1              STCP=1;
+  20   1      }
+  21          
+  22          void show(uint signalMonth)
+  23          {
+  24   1              uchar row,column,i; 
+  25   1              ul rlist=0,clist=0; 
+  26   1              uint myMonth;
+  27   1              myMonth=signalMonth;
+  28   1              row = myMonth/32;
+  29   1              column = myMonth%32;
+  30   1              for(i=0;i<row;i++)
+  31   1              {
+  32   2                      rlist<<=1;
+  33   2                      rlist|=0x01;
+  34   2              }
+  35   1              for(i=0;i<column;i++)
+  36   1              {
+  37   2                      clist<<=1;
+  38   2                      clist |= 0x01;
+  39   2              }
+  40   1              select(rlist,0xffffffff);
+  41   1              select(0,clist);
+  42   1      
+  43   1      
+  44   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    251    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      16
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+C51 COMPILER V8.06   LED                                                                   01/31/2018 17:29:58 PAGE 2   
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

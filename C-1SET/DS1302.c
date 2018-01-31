@@ -98,8 +98,8 @@ uint calMonth(uint month)
 	if(date == 0x31)
 	{
 		month++;
-		if(month > 1023)
-			month-=1023;
+		if(month > 1024)
+			month-=1024;
 		flashMonthChange(month);
 		hou = read1302(READ_HOU);
 		min = read1302(READ_MIN);
