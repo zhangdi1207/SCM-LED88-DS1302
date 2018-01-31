@@ -78,10 +78,10 @@ sbit ColumnSelect = P1^7;
 void Delay40us();
 void Delay1s();
 uint eepromInit();
-uint calMonth(uint month);
+uint calMonth(uint calmo);
 void initDS1302(uchar sec,uchar min,uchar hou);
-void flashMonthChange(uint month);
-void show(uint month);
+void flashMonthChange(uint fmonth);
+void show(uint signalMonth);
 
 
 

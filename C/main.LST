@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   MAIN                                                                  01/30/2018 16:32:39 PAGE 1   
+C51 COMPILER V8.06   MAIN                                                                  01/31/2018 11:10:30 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE MAIN
@@ -15,7 +15,7 @@ line level    source
    6   1              uint monthCount = 1;
    7   1              uint i,j;
    8   1              WDT_CONTR = WDT;
-   9   1              //Delay1s();
+   9   1              Delay1s();
   10   1              //1302³õÊ¼»¯¡¢¶ÁÈ¡MONTH_DATAÎª×îÐÂµÄmonthÊý¾Ý£¬Ã¿´ÎÉè¶¨»òds1302¼ÆÊ±³¬¹ý30Ìì£¬(Éè¶¨monthÊý¾ÝÖÁflash»òÕß30Ì
              -ìºómonth+1´æÖÁflash)È»ºó³õÊ¼»¯da1302
   11   1              initDS1302(0,0,0);
@@ -30,20 +30,24 @@ line level    source
   20   3                              monthCount = calMonth(monthCount);
   21   3                              showCount=0;
   22   3                      }
-  23   2                      monthCount=910;
-  24   2                      for(i=0;i<monthCount;i++)
-  25   2                      {
-  26   3                              show(i);
-  27   3                              for(j=0;j<30;j++)
-  28   3                              Delay40us();
-  29   3                      }
-  30   2                      
-  31   2              }
-  32   1      }
+  23   2                      //monthCount=400;
+  24   2                      j=0;
+  25   2                      for(i=0;i<monthCount;i++)
+  26   2                      {
+  27   3                              show(i);
+  28   3                              //j+=16;
+  29   3                              /*
+  30   3                              for(j=0;j<30;j++)
+  31   3                              Delay40us();
+  32   3                              //*/
+  33   3                      }
+  34   2                      
+  35   2              }
+  36   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    123    ----
+   CODE SIZE        =    100    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

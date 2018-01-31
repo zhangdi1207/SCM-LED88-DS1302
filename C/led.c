@@ -36,6 +36,7 @@ void chipSelect( uchar row,uchar column)
 		dat=dat<<1;
 		RCChannelSHCP=1;
 	}
+	RCChannelData=0;
 	RCChannelSTCP=0;
 	nop();
 	nop();
@@ -61,23 +62,20 @@ void columnSelect(uchar dat)
 
 void rowSelect(uchar signalrow)
 {
-		if(signalrow%8 == 0)
-		P2=0x55;
-	else
-		P2=0xaa;
-	P3 = (P3&0xf8)|signalrow;
+	RowData0 =signalrow%2;
+	RowData1 =(signalrow/2)%2;
+	RowData2 =(signalrow/4)%2;
 }
 
 
-void show(uint i)
+void show(uint signalMonth)
 {
-	uchar row,column,columnData,signalRow;
-	row= i/32;
-	signalRow=row%8;
-
-	column=i%32;
-	columnData=0x01<<(column%8);
-	chipSelect(row,column);
-	columnSelect(columnData);
-	rowSelect(signalRow);
+	uchar temp; 
+	uint myMonth;
+	myMonth=signalMonth;
+	chipSelect(myMonth/32,myMonth%32);
+	temp=0x01<<((myMonth%32)%8);
+	columnSelect(temp);
+	temp=(myMonth/32)%8;
+	rowSelect(temp);
 }

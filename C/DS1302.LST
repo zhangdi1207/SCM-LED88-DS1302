@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   DS1302                                                                01/30/2018 16:32:39 PAGE 1   
+C51 COMPILER V8.06   DS1302                                                                01/31/2018 11:10:31 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE DS1302
@@ -62,7 +62,7 @@ line level    source
   53   1              for(i=8;i>0;i--)
   54   1              {
   55   2                      DS1302CLK=0;
-C51 COMPILER V8.06   DS1302                                                                01/30/2018 16:32:39 PAGE 2   
+C51 COMPILER V8.06   DS1302                                                                01/31/2018 11:10:31 PAGE 2   
 
   56   2                      temp=addr;
   57   2                      DS1302IO=(bit)(temp&0x01);
@@ -99,7 +99,7 @@ line level    source
   88   1               write1302(WRITE_YEA,OR_YEA);
   89   1      }
   90          
-  91          
+  91          //*
   92          uint calMonth(uint month)
   93          {
   94   1              uchar date;
@@ -115,7 +115,25 @@ line level    source
  104   2                      initDS1302(sec,min,hou);
  105   2              }
  106   1              return month;
- 107   1      }
+ 107   1      } 
+ 108          //*/
+ 109          /*
+ 110          uint calMonth(uint month)
+ 111          {
+ 112                  uchar date;
+ 113                  uchar sec,min,hou;
+ 114                  date = read1302(READ_SEC);
+ 115                  if(date == 0x05)
+ 116                  {
+ 117                          month++;
+C51 COMPILER V8.06   DS1302                                                                01/31/2018 11:10:31 PAGE 3   
+
+ 118                          flashMonthChange(month);
+ 119                          initDS1302(0,0,0);
+ 120                  }
+ 121                  return month;
+ 122          }
+ 123          */
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
@@ -126,8 +144,6 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    DATA SIZE        =   ----       2
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
-C51 COMPILER V8.06   DS1302                                                                01/30/2018 16:32:39 PAGE 3   
-
 END OF MODULE INFORMATION.
 
 
