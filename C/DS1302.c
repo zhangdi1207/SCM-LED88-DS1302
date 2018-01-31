@@ -22,29 +22,28 @@ sbit DS1302IO = P1^5;
 */
 void write1302(uchar addr,uchar dat)
 {
-	uchar i,temp;
+	uchar i;
 	DS1302RST=0;
 	DS1302CLK=0;
 	DS1302RST=1;
 	for(i=8;i>0;i--)
 	{
 		DS1302CLK=0;
-		temp=addr;
-		DS1302IO=(bit)(temp&0x01);
-		addr>>=1;
+		DS1302IO=(bit)(addr&0x01);
 		DS1302CLK=1;
+		addr>>=1;
 	}
 	for(i=8;i>0;i--)
 	{
 		DS1302CLK=0;
-		temp=dat;
-		DS1302IO=(bit)(temp&0x01);
-		dat>>=1;
+		DS1302IO=(bit)(dat&0x01);
 		DS1302CLK=1;
+		dat>>=1;
 	}
+	DS1302RST=0;
 }
 
-uchar read1302(uchar addr)	 //BCDÂë
+uchar read1302(uchar addr)	 //BCD??
 {
 	uchar i,temp;
 	DS1302RST=0;
@@ -53,26 +52,28 @@ uchar read1302(uchar addr)	 //BCDÂë
 	for(i=8;i>0;i--)
 	{
 		DS1302CLK=0;
-		temp=addr;
-		DS1302IO=(bit)(temp&0x01);
+		DS1302IO=(bit)(addr&0x01);
+		DS1302CLK=1;
 		addr>>=1;
-		DS1302CLK=1;
 	}
+	temp=0;
+	nop();
+	nop();
 	for(i=8;i>0;i--)
-	{
-		temp= DS1302IO;
-		DS1302CLK=1;
+	{  
 		temp>>=1;
-		DS1302CLK=0;
+		DS1302CLK=0;		
+		if(DS1302IO)
+		{
+			temp=temp|0x80;
+		}
+		DS1302CLK=1;
+
 	}
 	DS1302RST=0;
-	/*
-	dat1=temp;
-	dat2=dat1/16;
-	dat1=dat1%16;
-	dat1=dat1+dat2*10;
-	return dat1;
-	*/
+	DS1302CLK=1;
+	DS1302IO=0;
+	DS1302IO=1;
 	return temp;
 }
 
@@ -97,6 +98,8 @@ uint calMonth(uint month)
 	if(date == 0x31)
 	{
 		month++;
+		if(month > 1023)
+			month-=1023;
 		flashMonthChange(month);
 		hou = read1302(READ_HOU);
 		min = read1302(READ_MIN);

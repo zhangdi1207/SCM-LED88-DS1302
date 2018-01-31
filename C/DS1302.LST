@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   DS1302                                                                01/31/2018 11:10:31 PAGE 1   
+C51 COMPILER V8.06   DS1302                                                                01/31/2018 13:17:27 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE DS1302
@@ -31,113 +31,116 @@ line level    source
   22          */
   23          void write1302(uchar addr,uchar dat)
   24          {
-  25   1              uchar i,temp;
+  25   1              uchar i;
   26   1              DS1302RST=0;
   27   1              DS1302CLK=0;
   28   1              DS1302RST=1;
   29   1              for(i=8;i>0;i--)
   30   1              {
   31   2                      DS1302CLK=0;
-  32   2                      temp=addr;
-  33   2                      DS1302IO=(bit)(temp&0x01);
+  32   2                      DS1302IO=(bit)(addr&0x01);
+  33   2                      DS1302CLK=1;
   34   2                      addr>>=1;
-  35   2                      DS1302CLK=1;
-  36   2              }
-  37   1              for(i=8;i>0;i--)
-  38   1              {
-  39   2                      DS1302CLK=0;
-  40   2                      temp=dat;
-  41   2                      DS1302IO=(bit)(temp&0x01);
-  42   2                      dat>>=1;
-  43   2                      DS1302CLK=1;
-  44   2              }
-  45   1      }
-  46          
-  47          uchar read1302(uchar addr)       //BCDÂë
-  48          {
-  49   1              uchar i,temp;
-  50   1              DS1302RST=0;
-  51   1              DS1302CLK=0;
-  52   1              DS1302RST=1;
-  53   1              for(i=8;i>0;i--)
-  54   1              {
-  55   2                      DS1302CLK=0;
-C51 COMPILER V8.06   DS1302                                                                01/31/2018 11:10:31 PAGE 2   
+  35   2              }
+  36   1              for(i=8;i>0;i--)
+  37   1              {
+  38   2                      DS1302CLK=0;
+  39   2                      DS1302IO=(bit)(dat&0x01);
+  40   2                      DS1302CLK=1;
+  41   2                      dat>>=1;
+  42   2              }
+  43   1              DS1302RST=0;
+  44   1      }
+  45          
+  46          uchar read1302(uchar addr)       //BCD??
+  47          {
+  48   1              uchar i,temp;
+  49   1              DS1302RST=0;
+  50   1              DS1302CLK=0;
+  51   1              DS1302RST=1;
+  52   1              for(i=8;i>0;i--)
+  53   1              {
+  54   2                      DS1302CLK=0;
+  55   2                      DS1302IO=(bit)(addr&0x01);
+C51 COMPILER V8.06   DS1302                                                                01/31/2018 13:17:27 PAGE 2   
 
-  56   2                      temp=addr;
-  57   2                      DS1302IO=(bit)(temp&0x01);
-  58   2                      addr>>=1;
-  59   2                      DS1302CLK=1;
-  60   2              }
-  61   1              for(i=8;i>0;i--)
-  62   1              {
-  63   2                      temp= DS1302IO;
-  64   2                      DS1302CLK=1;
-  65   2                      temp>>=1;
-  66   2                      DS1302CLK=0;
-  67   2              }
-  68   1              DS1302RST=0;
-  69   1              /*
-  70   1              dat1=temp;
-  71   1              dat2=dat1/16;
-  72   1              dat1=dat1%16;
-  73   1              dat1=dat1+dat2*10;
-  74   1              return dat1;
-  75   1              */
-  76   1              return temp;
-  77   1      }
-  78          
-  79          //void initDS1302(uchar sec=OR_SEC,uchar min=OR_MIN,uchar hou=OR_HOU)
-  80          void initDS1302(uchar sec,uchar min,uchar hou)
-  81          {
-  82   1               write1302(WRITE_PROTECT,0X00);
-  83   1               write1302(WRITE_SEC,sec);
-  84   1               write1302(WRITE_MIN,min);
-  85   1               write1302(WRITE_HOU,hou);
-  86   1               write1302(WRITE_DAT,OR_DAT);
-  87   1               write1302(WRITE_MON,OR_MON);
-  88   1               write1302(WRITE_YEA,OR_YEA);
-  89   1      }
-  90          
-  91          //*
-  92          uint calMonth(uint month)
-  93          {
-  94   1              uchar date;
-  95   1              uchar sec,min,hou;
-  96   1              date = read1302(READ_DAT);
-  97   1              if(date == 0x31)
-  98   1              {
-  99   2                      month++;
- 100   2                      flashMonthChange(month);
- 101   2                      hou = read1302(READ_HOU);
- 102   2                      min = read1302(READ_MIN);
- 103   2                      sec = read1302(READ_SEC);
- 104   2                      initDS1302(sec,min,hou);
- 105   2              }
- 106   1              return month;
- 107   1      } 
- 108          //*/
- 109          /*
- 110          uint calMonth(uint month)
- 111          {
- 112                  uchar date;
- 113                  uchar sec,min,hou;
- 114                  date = read1302(READ_SEC);
- 115                  if(date == 0x05)
- 116                  {
- 117                          month++;
-C51 COMPILER V8.06   DS1302                                                                01/31/2018 11:10:31 PAGE 3   
+  56   2                      DS1302CLK=1;
+  57   2                      addr>>=1;
+  58   2              }
+  59   1              temp=0;
+  60   1              nop();
+  61   1              nop();
+  62   1              for(i=8;i>0;i--)
+  63   1              {  
+  64   2                      temp>>=1;
+  65   2                      DS1302CLK=0;            
+  66   2                      if(DS1302IO)
+  67   2                      {
+  68   3                              temp=temp|0x80;
+  69   3                      }
+  70   2                      DS1302CLK=1;
+  71   2      
+  72   2              }
+  73   1              DS1302RST=0;
+  74   1              DS1302CLK=1;
+  75   1              DS1302IO=0;
+  76   1              DS1302IO=1;
+  77   1              return temp;
+  78   1      }
+  79          
+  80          //void initDS1302(uchar sec=OR_SEC,uchar min=OR_MIN,uchar hou=OR_HOU)
+  81          void initDS1302(uchar sec,uchar min,uchar hou)
+  82          {
+  83   1               write1302(WRITE_PROTECT,0X00);
+  84   1               write1302(WRITE_SEC,sec);
+  85   1               write1302(WRITE_MIN,min);
+  86   1               write1302(WRITE_HOU,hou);
+  87   1               write1302(WRITE_DAT,OR_DAT);
+  88   1               write1302(WRITE_MON,OR_MON);
+  89   1               write1302(WRITE_YEA,OR_YEA);
+  90   1      }
+  91          
+  92          //*
+  93          uint calMonth(uint month)
+  94          {
+  95   1              uchar date;
+  96   1              uchar sec,min,hou;
+  97   1              date = read1302(READ_DAT);
+  98   1              if(date == 0x31)
+  99   1              {
+ 100   2                      month++;
+ 101   2                      if(month > 1023)
+ 102   2                              month-=1023;
+ 103   2                      flashMonthChange(month);
+ 104   2                      hou = read1302(READ_HOU);
+ 105   2                      min = read1302(READ_MIN);
+ 106   2                      sec = read1302(READ_SEC);
+ 107   2                      initDS1302(sec,min,hou);
+ 108   2              }
+ 109   1              return month;
+ 110   1      } 
+ 111          //*/
+ 112          /*
+ 113          uint calMonth(uint month)
+ 114          {
+ 115                  uchar date;
+ 116                  uchar sec,min,hou;
+ 117                  date = read1302(READ_SEC);
+C51 COMPILER V8.06   DS1302                                                                01/31/2018 13:17:27 PAGE 3   
 
- 118                          flashMonthChange(month);
- 119                          initDS1302(0,0,0);
- 120                  }
- 121                  return month;
- 122          }
- 123          */
+ 118                  if(date == 0x05)
+ 119                  {
+ 120                          month++;
+ 121                          flashMonthChange(month);
+ 122                          initDS1302(0,0,0);
+ 123                  }
+ 124                  return month;
+ 125          }
+ 126          */
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    199    ----
+   CODE SIZE        =    224    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

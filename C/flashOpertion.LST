@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   FLASHOPERTION                                                         01/31/2018 11:10:31 PAGE 1   
+C51 COMPILER V8.06   FLASHOPERTION                                                         01/31/2018 13:17:27 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE FLASHOPERTION
@@ -62,7 +62,7 @@ line level    source
   53   1          IAP_ADDRL = addr;               //设置IAP低地址
   54   1          IAP_ADDRH = addr >> 8;          //设置IAP高地址
   55   1          IAP_TRIG = 0x5a;                //写触发命令(0x5a)
-C51 COMPILER V8.06   FLASHOPERTION                                                         01/31/2018 11:10:31 PAGE 2   
+C51 COMPILER V8.06   FLASHOPERTION                                                         01/31/2018 13:17:27 PAGE 2   
 
   56   1          IAP_TRIG = 0xa5;                //写触发命令(0xa5)
   57   1          Delay40us();                        //等待ISP/IAP/EEPROM操作完成
