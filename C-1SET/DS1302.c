@@ -94,6 +94,8 @@ uint calMonth(uint month)
 {
 	uchar date;
 	uchar sec,min,hou;
+	if(month==0)
+		month=1;
 	date = read1302(READ_DAT);
 	if(date == 0x31)
 	{
@@ -109,18 +111,20 @@ uint calMonth(uint month)
 	return month;
 } 
 //*/
-/*
+/*//
 uint calMonth(uint month)
 {
 	uchar date;
 	uchar sec,min,hou;
 	date = read1302(READ_SEC);
-	if(date == 0x05)
+	if(date == 0x31)
 	{
-		month++;
+		month+=32;
+		if(month > 1024)
+			month-=1024;
 		flashMonthChange(month);
 		initDS1302(0,0,0);
 	}
 	return month;
 }
-*/
+//*/

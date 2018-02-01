@@ -36,7 +36,7 @@
 #define OR_MIN 00
 #define OR_SEC 00
 
-#define SHOWPRA 10//100 //显示多少次统计一下时间
+#define SHOWPRA 100000 //显示多少次统计一下时间
 
 
 sfr AUXR        =   0x8e;
@@ -50,10 +50,10 @@ sfr CLK_DIV = 0x97;					//时钟命令寄存器
 sfr WDT_CONTR = 0xc1;
 
 //行列数据74HC595
-sbit SHCP = P3^1;
-sbit STCP = P3^2;
-sbit ROWD = P3^3;
-sbit COLD = P3^4;
+sbit SHCP = P3^0;
+sbit STCP = P3^1;
+sbit ROWD = P3^2;
+sbit COLD = P3^3;
 
 
 
@@ -70,6 +70,7 @@ uint calMonth(uint calmo);
 void initDS1302(uchar sec,uchar min,uchar hou);
 void flashMonthChange(uint fmonth);
 void show(uint signalMonth);
+uchar read1302(uchar addr);
 
 
 //所需数据

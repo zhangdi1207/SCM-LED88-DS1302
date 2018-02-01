@@ -3,7 +3,7 @@
 
 void select(ul row,ul column)
 {
-	uchar i;
+	int i;
 	for(i=31;i>=0;i--)
 	{
 
@@ -37,8 +37,11 @@ void show(uint signalMonth)
 		clist<<=1;
 		clist |= 0x01;
 	}
-	select(rlist,0xffffffff);
-	select(0,clist);
+	select(~rlist,0xffffffff);
+	rlist=1;
+	rlist=rlist<<row;
+	select(~rlist,clist);
+	//*/
 
 
 }

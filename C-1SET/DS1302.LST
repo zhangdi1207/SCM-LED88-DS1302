@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   DS1302                                                                01/31/2018 17:46:39 PAGE 1   
+C51 COMPILER V8.06   DS1302                                                                02/01/2018 10:35:33 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE DS1302
@@ -62,7 +62,7 @@ line level    source
   53   1              {
   54   2                      DS1302CLK=0;
   55   2                      DS1302IO=(bit)(addr&0x01);
-C51 COMPILER V8.06   DS1302                                                                01/31/2018 17:46:39 PAGE 2   
+C51 COMPILER V8.06   DS1302                                                                02/01/2018 10:35:33 PAGE 2   
 
   56   2                      DS1302CLK=1;
   57   2                      addr>>=1;
@@ -105,42 +105,46 @@ line level    source
   94          {
   95   1              uchar date;
   96   1              uchar sec,min,hou;
-  97   1              date = read1302(READ_DAT);
-  98   1              if(date == 0x31)
-  99   1              {
- 100   2                      month++;
- 101   2                      if(month > 1024)
- 102   2                              month-=1024;
- 103   2                      flashMonthChange(month);
- 104   2                      hou = read1302(READ_HOU);
- 105   2                      min = read1302(READ_MIN);
- 106   2                      sec = read1302(READ_SEC);
- 107   2                      initDS1302(sec,min,hou);
- 108   2              }
- 109   1              return month;
- 110   1      } 
- 111          //*/
- 112          /*
- 113          uint calMonth(uint month)
- 114          {
- 115                  uchar date;
- 116                  uchar sec,min,hou;
- 117                  date = read1302(READ_SEC);
-C51 COMPILER V8.06   DS1302                                                                01/31/2018 17:46:39 PAGE 3   
+  97   1              if(month==0)
+  98   1                      month=1;
+  99   1              date = read1302(READ_DAT);
+ 100   1              if(date == 0x31)
+ 101   1              {
+ 102   2                      month++;
+ 103   2                      if(month > 1024)
+ 104   2                              month-=1024;
+ 105   2                      flashMonthChange(month);
+ 106   2                      hou = read1302(READ_HOU);
+ 107   2                      min = read1302(READ_MIN);
+ 108   2                      sec = read1302(READ_SEC);
+ 109   2                      initDS1302(sec,min,hou);
+ 110   2              }
+ 111   1              return month;
+ 112   1      } 
+ 113          //*/
+ 114          /*//
+ 115          uint calMonth(uint month)
+ 116          {
+ 117                  uchar date;
+C51 COMPILER V8.06   DS1302                                                                02/01/2018 10:35:33 PAGE 3   
 
- 118                  if(date == 0x05)
- 119                  {
- 120                          month++;
- 121                          flashMonthChange(month);
- 122                          initDS1302(0,0,0);
- 123                  }
- 124                  return month;
- 125          }
- 126          */
+ 118                  uchar sec,min,hou;
+ 119                  date = read1302(READ_SEC);
+ 120                  if(date == 0x31)
+ 121                  {
+ 122                          month+=32;
+ 123                          if(month > 1024)
+ 124                                  month-=1024;
+ 125                          flashMonthChange(month);
+ 126                          initDS1302(0,0,0);
+ 127                  }
+ 128                  return month;
+ 129          }
+ 130          //*/
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    223    ----
+   CODE SIZE        =    234    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

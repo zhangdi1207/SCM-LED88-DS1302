@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   LED                                                                   01/31/2018 17:46:39 PAGE 1   
+C51 COMPILER V8.06   LED                                                                   02/01/2018 10:35:33 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE LED
@@ -12,7 +12,7 @@ line level    source
    3          
    4          void select(ul row,ul column)
    5          {
-   6   1              uchar i;
+   6   1              int i;
    7   1              for(i=31;i>=0;i--)
    8   1              {
    9   2      
@@ -46,24 +46,27 @@ line level    source
   37   2                      clist<<=1;
   38   2                      clist |= 0x01;
   39   2              }
-  40   1              select(rlist,0xffffffff);
-  41   1              select(0,clist);
-  42   1      
-  43   1      
-  44   1      }
+  40   1              select(~rlist,0xffffffff);
+  41   1              rlist=1;
+  42   1              rlist=rlist<<row;
+  43   1              select(~rlist,clist);
+  44   1              //*/
+  45   1      
+  46   1      
+  47   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    251    ----
+   CODE SIZE        =    292    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----      16
+   DATA SIZE        =   ----      17
+C51 COMPILER V8.06   LED                                                                   02/01/2018 10:35:33 PAGE 2   
+
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
-
-C51 COMPILER V8.06   LED                                                                   01/31/2018 17:46:39 PAGE 2   
 
 
 C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
