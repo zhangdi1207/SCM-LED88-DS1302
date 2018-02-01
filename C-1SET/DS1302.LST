@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   DS1302                                                                02/01/2018 13:24:32 PAGE 1   
+C51 COMPILER V8.06   DS1302                                                                02/01/2018 17:01:55 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE DS1302
@@ -62,7 +62,7 @@ line level    source
   53   1              {
   54   2                      DS1302CLK=0;
   55   2                      DS1302IO=(bit)(addr&0x01);
-C51 COMPILER V8.06   DS1302                                                                02/01/2018 13:24:32 PAGE 2   
+C51 COMPILER V8.06   DS1302                                                                02/01/2018 17:01:55 PAGE 2   
 
   56   2                      DS1302CLK=1;
   57   2                      addr>>=1;
@@ -100,51 +100,48 @@ line level    source
   89   1               write1302(WRITE_YEA,OR_YEA);
   90   1      }
   91          
-  92          //*
+  92          
   93          uint calMonth(uint month)
   94          {
   95   1              uchar date;
   96   1              uchar sec,min,hou;
   97   1              if(month==0)
   98   1                      month=1;
-  99   1              date = read1302(READ_DAT);
- 100   1              if(date == 0x31)
- 101   1              {
- 102   2                      month++;
- 103   2                      if(month > 1024)
- 104   2                              month-=1024;
- 105   2                      flashMonthChange(month);
- 106   2                      hou = read1302(READ_HOU);
- 107   2                      min = read1302(READ_MIN);
- 108   2                      sec = read1302(READ_SEC);
- 109   2                      initDS1302(sec,min,hou);
- 110   2              }
- 111   1              return month;
- 112   1      } 
- 113          //*/
- 114          /*//
- 115          uint calMonth(uint month)
- 116          {
- 117                  uchar date;
-C51 COMPILER V8.06   DS1302                                                                02/01/2018 13:24:32 PAGE 3   
+  99   1              if(!TESTFLAG)
+ 100   1              {
+ 101   2                      date = read1302(READ_DAT);
+ 102   2                      if(date == 0x31)
+ 103   2                      {
+ 104   3                              month++;
+ 105   3                              if(month > 1024)
+ 106   3                                      month-=1024;
+ 107   3                              flashMonthChange(month);
+ 108   3                              hou = read1302(READ_HOU);
+ 109   3                              min = read1302(READ_MIN);
+ 110   3                              sec = read1302(READ_SEC);
+ 111   3                              initDS1302(sec,min,hou);
+ 112   3                      }
+ 113   2              }
+ 114   1              else
+ 115   1              {
+ 116   2                      date = read1302(READ_SEC);
+ 117   2                      if(date == 0x01)
+C51 COMPILER V8.06   DS1302                                                                02/01/2018 17:01:55 PAGE 3   
 
- 118                  uchar sec,min,hou;
- 119                  date = read1302(READ_SEC);
- 120                  if(date == 0x01)
- 121                  {
- 122                          month+=10;
- 123                          if(month > 1024)
- 124                                  month-=1024;
- 125                          flashMonthChange(month);
- 126                          initDS1302(0,0,0);
- 127                  }
- 128                  return month;
- 129          }
- 130          //*/
+ 118   2                      {
+ 119   3                              month+=1;
+ 120   3                              if(month > 1024)
+ 121   3                                      month-=1024;
+ 122   3                              flashMonthChange(month);
+ 123   3                              initDS1302(0,0,0);
+ 124   3                      }
+ 125   2              }
+ 126   1              return month;
+ 127   1      } 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    234    ----
+   CODE SIZE        =    217    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

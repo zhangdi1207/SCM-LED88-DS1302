@@ -24,7 +24,14 @@ void Delay40us()		//@11.0592MHz
 	while (--i);
 }
 
-
+void Delay10ms()
+{
+	uchar i=250;
+	while(i--)
+	{
+		Delay40us();
+	}
+}
 
 
 void Delay1s()		//@11.0592MHz

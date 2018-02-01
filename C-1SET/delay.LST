@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   DELAY                                                                 02/01/2018 13:24:32 PAGE 1   
+C51 COMPILER V8.06   DELAY                                                                 02/01/2018 17:01:55 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE DELAY
@@ -33,37 +33,44 @@ line level    source
   24   1              while (--i);
   25   1      }
   26          
-  27          
-  28          
-  29          
-  30          void Delay1s()          //@11.0592MHz
-  31          {
-  32   1              unsigned char i, j, k;
-  33   1              WDT_CONTR = WDT;
-  34   1              _nop_();
-  35   1              _nop_();
-  36   1              i = 43;
-  37   1              j = 6;
-  38   1              k = 203;
-  39   1              do
-  40   1              {
-  41   2                      do
-  42   2                      {
-  43   3                              while (--k);
-  44   3                      } while (--j);
-  45   2              } while (--i);
-  46   1      }
+  27          void Delay10ms()
+  28          {
+  29   1              uchar i=250;
+  30   1              while(i--)
+  31   1              {
+  32   2                      Delay40us();
+  33   2              }
+  34   1      }
+  35          
+  36          
+  37          void Delay1s()          //@11.0592MHz
+  38          {
+  39   1              unsigned char i, j, k;
+  40   1              WDT_CONTR = WDT;
+  41   1              _nop_();
+  42   1              _nop_();
+  43   1              i = 43;
+  44   1              j = 6;
+  45   1              k = 203;
+  46   1              do
+  47   1              {
+  48   2                      do
+  49   2                      {
+  50   3                              while (--k);
+  51   3                      } while (--j);
+  52   2              } while (--i);
+  53   1      }
 
+
+C51 COMPILER V8.06   DELAY                                                                 02/01/2018 17:01:55 PAGE 2   
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     26    ----
+   CODE SIZE        =     40    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
-C51 COMPILER V8.06   DELAY                                                                 02/01/2018 13:24:32 PAGE 2   
-
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 

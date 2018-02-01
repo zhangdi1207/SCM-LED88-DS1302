@@ -38,6 +38,8 @@
 
 #define SHOWPRA 100000 //显示多少次统计一下时间
 
+#define TESTFLAG 1
+
 
 sfr AUXR        =   0x8e;
 sfr IAP_DATA    =   0xC2;           //IAP数据寄存器
@@ -80,6 +82,7 @@ void initDS1302(uchar sec,uchar min,uchar hou);
 void flashMonthChange(uint fmonth);
 void show(uint signalMonth);
 uchar read1302(uchar addr);
+void monthSet();
 
 
 //所需数据

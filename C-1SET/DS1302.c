@@ -89,42 +89,39 @@ void initDS1302(uchar sec,uchar min,uchar hou)
 	 write1302(WRITE_YEA,OR_YEA);
 }
 
-//*
+
 uint calMonth(uint month)
 {
 	uchar date;
 	uchar sec,min,hou;
 	if(month==0)
 		month=1;
-	date = read1302(READ_DAT);
-	if(date == 0x31)
+	if(!TESTFLAG)
 	{
-		month++;
-		if(month > 1024)
-			month-=1024;
-		flashMonthChange(month);
-		hou = read1302(READ_HOU);
-		min = read1302(READ_MIN);
-		sec = read1302(READ_SEC);
-		initDS1302(sec,min,hou);
+		date = read1302(READ_DAT);
+		if(date == 0x31)
+		{
+			month++;
+			if(month > 1024)
+				month-=1024;
+			flashMonthChange(month);
+			hou = read1302(READ_HOU);
+			min = read1302(READ_MIN);
+			sec = read1302(READ_SEC);
+			initDS1302(sec,min,hou);
+		}
+	}
+	else
+	{
+		date = read1302(READ_SEC);
+		if(date == 0x01)
+		{
+			month+=1;
+			if(month > 1024)
+				month-=1024;
+			flashMonthChange(month);
+			initDS1302(0,0,0);
+		}
 	}
 	return month;
 } 
-//*/
-/*//
-uint calMonth(uint month)
-{
-	uchar date;
-	uchar sec,min,hou;
-	date = read1302(READ_SEC);
-	if(date == 0x01)
-	{
-		month+=10;
-		if(month > 1024)
-			month-=1024;
-		flashMonthChange(month);
-		initDS1302(0,0,0);
-	}
-	return month;
-}
-//*/
