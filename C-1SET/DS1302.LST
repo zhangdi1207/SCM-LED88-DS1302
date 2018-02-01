@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   DS1302                                                                02/01/2018 10:35:33 PAGE 1   
+C51 COMPILER V8.06   DS1302                                                                02/01/2018 13:24:32 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE DS1302
@@ -62,7 +62,7 @@ line level    source
   53   1              {
   54   2                      DS1302CLK=0;
   55   2                      DS1302IO=(bit)(addr&0x01);
-C51 COMPILER V8.06   DS1302                                                                02/01/2018 10:35:33 PAGE 2   
+C51 COMPILER V8.06   DS1302                                                                02/01/2018 13:24:32 PAGE 2   
 
   56   2                      DS1302CLK=1;
   57   2                      addr>>=1;
@@ -126,13 +126,13 @@ line level    source
  115          uint calMonth(uint month)
  116          {
  117                  uchar date;
-C51 COMPILER V8.06   DS1302                                                                02/01/2018 10:35:33 PAGE 3   
+C51 COMPILER V8.06   DS1302                                                                02/01/2018 13:24:32 PAGE 3   
 
  118                  uchar sec,min,hou;
  119                  date = read1302(READ_SEC);
- 120                  if(date == 0x31)
+ 120                  if(date == 0x01)
  121                  {
- 122                          month+=32;
+ 122                          month+=10;
  123                          if(month > 1024)
  124                                  month-=1024;
  125                          flashMonthChange(month);

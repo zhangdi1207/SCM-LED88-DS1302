@@ -117,9 +117,9 @@ uint calMonth(uint month)
 	uchar date;
 	uchar sec,min,hou;
 	date = read1302(READ_SEC);
-	if(date == 0x31)
+	if(date == 0x01)
 	{
-		month+=32;
+		month+=10;
 		if(month > 1024)
 			month-=1024;
 		flashMonthChange(month);

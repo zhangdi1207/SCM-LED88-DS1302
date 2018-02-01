@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   LED                                                                   02/01/2018 10:35:33 PAGE 1   
+C51 COMPILER V8.06   LED                                                                   02/01/2018 13:24:32 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE LED
@@ -13,57 +13,65 @@ line level    source
    4          void select(ul row,ul column)
    5          {
    6   1              int i;
-   7   1              for(i=31;i>=0;i--)
+   7   1              for(i=7;i>=0;i--)
    8   1              {
    9   2      
-  10   2                      ROWD=(row>>i)&0x01;
-  11   2                      COLD=(column>>i)&0x01;
-  12   2                      SHCP=0;
-  13   2                      nop();
-  14   2                      SHCP=1;
-  15   2              }
-  16   1              STCP=0;
-  17   1              nop();
-  18   1              nop();
-  19   1              STCP=1;
-  20   1      }
-  21          
-  22          void show(uint signalMonth)
-  23          {
-  24   1              uchar row,column,i; 
-  25   1              ul rlist=0,clist=0; 
-  26   1              uint myMonth;
-  27   1              myMonth=signalMonth;
-  28   1              row = myMonth/32;
-  29   1              column = myMonth%32;
-  30   1              for(i=0;i<row;i++)
-  31   1              {
-  32   2                      rlist<<=1;
-  33   2                      rlist|=0x01;
-  34   2              }
-  35   1              for(i=0;i<column;i++)
-  36   1              {
-  37   2                      clist<<=1;
-  38   2                      clist |= 0x01;
-  39   2              }
-  40   1              select(~rlist,0xffffffff);
-  41   1              rlist=1;
-  42   1              rlist=rlist<<row;
-  43   1              select(~rlist,clist);
-  44   1              //*/
-  45   1      
-  46   1      
-  47   1      }
+  10   2                      ROW0D=(row>>i)&0x01;
+  11   2                      COL0D=(column>>i)&0x01;
+  12   2                      ROW1D=(row>>(i+8))&0x01;
+  13   2                      COL1D=(column>>(i+8))&0x01;
+  14   2                      ROW2D=(row>>(i+16))&0x01;
+  15   2                      COL2D=(column>>(i+16))&0x01;
+  16   2                      ROW3D=(row>>(i+24))&0x01;
+  17   2                      COL3D=(column>>(i+24))&0x01;
+  18   2                      SHCP=0;
+  19   2                      nop();
+  20   2                      SHCP=1;
+  21   2              }
+  22   1              STCP=0;
+  23   1              nop();
+  24   1              nop();
+  25   1              STCP=1;
+  26   1      }
+  27          
+  28          void show(uint signalMonth)
+  29          {
+  30   1              uchar row,column,i; 
+  31   1              ul rlist=0,clist=0; 
+  32   1              uint myMonth;
+  33   1              myMonth=signalMonth;
+  34   1              row = myMonth/32;
+  35   1              column = myMonth%32;
+  36   1              for(i=0;i<row;i++)
+  37   1              {
+  38   2                      rlist=1;
+  39   2                      rlist = rlist<<i;
+  40   2                      select(~rlist,0xffff);
+  41   2                      select(~rlist,0xffff0000);
+  42   2              }
+  43   1              for(i=0;i<column;i++)
+  44   1              {
+  45   2                      clist<<=1;
+  46   2                      clist |= 0x01;
+  47   2              }
+  48   1              rlist=1;
+  49   1              rlist=rlist<<row;
+  50   1              select(~rlist,clist&0xffff);
+  51   1              select(~rlist,clist&0xffff0000);
+  52   1              //*/
+  53   1      
+  54   1      
+  55   1      }
+C51 COMPILER V8.06   LED                                                                   02/01/2018 13:24:32 PAGE 2   
+
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    292    ----
+   CODE SIZE        =    486    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----      17
-C51 COMPILER V8.06   LED                                                                   02/01/2018 10:35:33 PAGE 2   
-
+   DATA SIZE        =   ----      19
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
