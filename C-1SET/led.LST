@@ -1,9 +1,9 @@
-C51 COMPILER V8.06   LED                                                                   02/01/2018 17:01:55 PAGE 1   
+C51 COMPILER V8.06   LED                                                                   02/04/2018 18:37:47 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE LED
 OBJECT MODULE PLACED IN led.OBJ
-COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE led.c BROWSE DEBUG OBJECTEXTEND
+COMPILER INVOKED BY: D:\Program Files\keil\C51\BIN\C51.EXE led.c BROWSE DEBUG OBJECTEXTEND
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   53   1      
   54   1      
   55   1      }
-C51 COMPILER V8.06   LED                                                                   02/01/2018 17:01:55 PAGE 2   
+C51 COMPILER V8.06   LED                                                                   02/04/2018 18:37:47 PAGE 2   
 
 
 

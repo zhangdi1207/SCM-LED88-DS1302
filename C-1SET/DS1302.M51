@@ -1,8 +1,9 @@
-BL51 BANKED LINKER/LOCATER V6.05                                                        02/01/2018  17:01:55  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.05                                                        02/04/2018  18:37:47  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.05, INVOKED BY:
-C:\KEIL\C51\BIN\BL51.EXE main.obj, delay.obj, flashOpertion.obj, DS1302.obj, led.obj TO DS1302 RAMSIZE (256)
+D:\PROGRAM FILES\KEIL\C51\BIN\BL51.EXE main.obj, delay.obj, flashOpertion.obj, DS1302.obj, led.obj TO DS1302 RAMSIZE (25
+>> 6)
 
 
 MEMORY MODEL: SMALL
@@ -14,11 +15,11 @@ INPUT MODULES INCLUDED:
   flashOpertion.obj (FLASHOPERTION)
   DS1302.obj (DS1302)
   led.obj (LED)
-  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
-  C:\KEIL\C51\LIB\C51S.LIB (?C?LNOT)
-  C:\KEIL\C51\LIB\C51S.LIB (?C?ULCMP)
-  C:\KEIL\C51\LIB\C51S.LIB (?C?ULSHR)
-  C:\KEIL\C51\LIB\C51S.LIB (?C?LSHL)
+  D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C?LNOT)
+  D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C?ULCMP)
+  D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C?ULSHR)
+  D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C?LSHL)
 
 
 LINK MAP OF MODULE:  DS1302 (MAIN)
@@ -58,10 +59,10 @@ LINK MAP OF MODULE:  DS1302 (MAIN)
 OVERLAY MAP OF MODULE:   DS1302 (MAIN)
 
 
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  18:37:47  PAGE 2
+
+
 SEGMENT                                       DATA_GROUP 
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/01/2018  17:01:55  PAGE 2
-
-
   +--> CALLED SEGMENT                       START    LENGTH
 -----------------------------------------------------------
 ?C_C51STARTUP                               -----    -----
@@ -118,10 +119,10 @@ UNRESOLVED EXTERNAL SYMBOLS:
 SYMBOL TABLE OF MODULE:  DS1302 (MAIN)
 
   VALUE           TYPE          NAME
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  18:37:47  PAGE 3
+
+
   ----------------------------------
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/01/2018  17:01:55  PAGE 3
-
-
 
   -------         MODULE        MAIN
   C:0000H         SYMBOL        _ICE_DUMMY_
@@ -178,10 +179,10 @@ SYMBOL TABLE OF MODULE:  DS1302 (MAIN)
   D:0088H         PUBLIC        TCON
   C:046BH         PUBLIC        Delay40us
   D:00C1H         PUBLIC        WDT_CONTR
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  18:37:47  PAGE 4
+
+
   D:00C8H         PUBLIC        T2CON
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/01/2018  17:01:55  PAGE 4
-
-
   D:00D0H         PUBLIC        PSW
   -------         PROC          DELAY40US
   -------         DO            
@@ -238,10 +239,10 @@ SYMBOL TABLE OF MODULE:  DS1302 (MAIN)
   D:00A8H         PUBLIC        IE
   C:0404H         PUBLIC        _IapProgramByte
   D:00C5H         PUBLIC        IAP_CMD
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  18:37:47  PAGE 5
+
+
   D:00B8H         PUBLIC        IP
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/01/2018  17:01:55  PAGE 5
-
-
   C:0452H         PUBLIC        IapIdle
   D:00C3H         PUBLIC        IAP_ADDRH
   C:025BH         PUBLIC        eepromInit
@@ -298,10 +299,10 @@ SYMBOL TABLE OF MODULE:  DS1302 (MAIN)
   C:0413H         LINE#         41
   C:0416H         LINE#         42
   C:0419H         LINE#         44
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  18:37:47  PAGE 6
+
+
   -------         ENDPROC       _IAPPROGRAMBYTE
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/01/2018  17:01:55  PAGE 6
-
-
   -------         PROC          _IAPERASESECTOR
   D:0006H         SYMBOL        addr
   C:041CH         LINE#         49
@@ -358,10 +359,10 @@ SYMBOL TABLE OF MODULE:  DS1302 (MAIN)
   D:0090H         PUBLIC        P1
   D:00B0H         PUBLIC        P3
   D:00A8H         PUBLIC        IE
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  18:37:47  PAGE 7
+
+
   C:0370H         PUBLIC        _initDS1302
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/01/2018  17:01:55  PAGE 7
-
-
   D:00B8H         PUBLIC        IP
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
@@ -418,10 +419,10 @@ SYMBOL TABLE OF MODULE:  DS1302 (MAIN)
   C:0345H         LINE#         55
   C:0349H         LINE#         56
   C:034BH         LINE#         57
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  18:37:47  PAGE 8
+
+
   C:034FH         LINE#         58
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/01/2018  17:01:55  PAGE 8
-
-
   C:0351H         LINE#         59
   C:0353H         LINE#         60
   C:0354H         LINE#         61
@@ -478,10 +479,10 @@ SYMBOL TABLE OF MODULE:  DS1302 (MAIN)
   C:02C0H         LINE#         106
   C:02C0H         LINE#         115
   C:02C0H         LINE#         116
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  18:37:47  PAGE 9
+
+
   C:02C5H         LINE#         117
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/01/2018  17:01:55  PAGE 9
-
-
   C:02C8H         LINE#         118
   C:02C8H         LINE#         119
   C:02D0H         LINE#         120
@@ -538,10 +539,10 @@ SYMBOL TABLE OF MODULE:  DS1302 (MAIN)
   C:01CDH         LINE#         18
   C:01CFH         LINE#         19
   C:01D0H         LINE#         20
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  18:37:47  PAGE 10
+
+
   C:01D2H         LINE#         21
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/01/2018  17:01:55  PAGE 10
-
-
   C:01E2H         LINE#         22
   C:01E4H         LINE#         23
   C:01E5H         LINE#         24
@@ -598,8 +599,8 @@ SYMBOL TABLE OF MODULE:  DS1302 (MAIN)
   -------         MODULE        ?C?LSHL
   C:0328H         PUBLIC        ?C?LSHL
   -------         ENDMOD        ?C?LSHL
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  18:37:47  PAGE 11
 
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/01/2018  17:01:55  PAGE 11
 
 
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS

@@ -1,9 +1,9 @@
-C51 COMPILER V8.06   DELAY                                                                 02/01/2018 17:01:55 PAGE 1   
+C51 COMPILER V8.06   DELAY                                                                 02/04/2018 18:37:46 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE DELAY
 OBJECT MODULE PLACED IN delay.OBJ
-COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE delay.c BROWSE DEBUG OBJECTEXTEND
+COMPILER INVOKED BY: D:\Program Files\keil\C51\BIN\C51.EXE delay.c BROWSE DEBUG OBJECTEXTEND
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   53   1      }
 
 
-C51 COMPILER V8.06   DELAY                                                                 02/01/2018 17:01:55 PAGE 2   
+C51 COMPILER V8.06   DELAY                                                                 02/04/2018 18:37:46 PAGE 2   
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =     40    ----

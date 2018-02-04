@@ -1,9 +1,9 @@
-C51 COMPILER V8.06   MAIN                                                                  02/01/2018 17:01:55 PAGE 1   
+C51 COMPILER V8.06   MAIN                                                                  02/04/2018 18:37:46 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE MAIN
 OBJECT MODULE PLACED IN main.OBJ
-COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+COMPILER INVOKED BY: D:\Program Files\keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
 
 line level    source
 

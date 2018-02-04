@@ -1,9 +1,9 @@
-C51 COMPILER V8.06   DS1302                                                                02/01/2018 17:01:55 PAGE 1   
+C51 COMPILER V8.06   DS1302                                                                02/04/2018 18:37:47 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE DS1302
 OBJECT MODULE PLACED IN DS1302.OBJ
-COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE DS1302.c BROWSE DEBUG OBJECTEXTEND
+COMPILER INVOKED BY: D:\Program Files\keil\C51\BIN\C51.EXE DS1302.c BROWSE DEBUG OBJECTEXTEND
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   53   1              {
   54   2                      DS1302CLK=0;
   55   2                      DS1302IO=(bit)(addr&0x01);
-C51 COMPILER V8.06   DS1302                                                                02/01/2018 17:01:55 PAGE 2   
+C51 COMPILER V8.06   DS1302                                                                02/04/2018 18:37:47 PAGE 2   
 
   56   2                      DS1302CLK=1;
   57   2                      addr>>=1;
@@ -126,7 +126,7 @@ line level    source
  115   1              {
  116   2                      date = read1302(READ_SEC);
  117   2                      if(date == 0x01)
-C51 COMPILER V8.06   DS1302                                                                02/01/2018 17:01:55 PAGE 3   
+C51 COMPILER V8.06   DS1302                                                                02/04/2018 18:37:47 PAGE 3   
 
  118   2                      {
  119   3                              month+=1;

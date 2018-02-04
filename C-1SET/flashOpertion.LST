@@ -1,9 +1,9 @@
-C51 COMPILER V8.06   FLASHOPERTION                                                         02/01/2018 17:01:55 PAGE 1   
+C51 COMPILER V8.06   FLASHOPERTION                                                         02/04/2018 18:37:46 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE FLASHOPERTION
 OBJECT MODULE PLACED IN flashOpertion.OBJ
-COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE flashOpertion.c BROWSE DEBUG OBJECTEXTEND
+COMPILER INVOKED BY: D:\Program Files\keil\C51\BIN\C51.EXE flashOpertion.c BROWSE DEBUG OBJECTEXTEND
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   53   1          IAP_ADDRL = addr;               //设置IAP低地址
   54   1          IAP_ADDRH = addr >> 8;          //设置IAP高地址
   55   1          IAP_TRIG = 0x5a;                //写触发命令(0x5a)
-C51 COMPILER V8.06   FLASHOPERTION                                                         02/01/2018 17:01:55 PAGE 2   
+C51 COMPILER V8.06   FLASHOPERTION                                                         02/04/2018 18:37:46 PAGE 2   
 
   56   1          IAP_TRIG = 0xa5;                //写触发命令(0xa5)
   57   1          Delay40us();                        //等待ISP/IAP/EEPROM操作完成
