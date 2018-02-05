@@ -1,9 +1,9 @@
-C51 COMPILER V8.06   TEST                                                                  02/04/2018 23:17:32 PAGE 1   
+C51 COMPILER V8.06   TEST                                                                  02/05/2018 13:01:44 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE TEST
 OBJECT MODULE PLACED IN test.OBJ
-COMPILER INVOKED BY: D:\Program Files\keil\C51\BIN\C51.EXE test.c BROWSE DEBUG OBJECTEXTEND
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE test.c BROWSE DEBUG OBJECTEXTEND
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   53          sbit SHCP = P3^0;
   54          sbit STCP = P3^1;
   55          sbit ROW0D = P3^2;
-C51 COMPILER V8.06   TEST                                                                  02/04/2018 23:17:32 PAGE 2   
+C51 COMPILER V8.06   TEST                                                                  02/05/2018 13:01:44 PAGE 2   
 
   56          sbit COL0D = P3^3;
   57          sbit ROW1D = P3^6;
@@ -120,13 +120,13 @@ line level    source
  109   1              return temp;
  110   1      }
  111          
- 112          void select(ul row,ul column)
+ 112          void select(ul row,ul column)           //注意row取反,假设共阴
  113          {
  114   1              int i;
  115   1              row=~row;
  116   1              column=~column;
  117   1              for(i=7;i>=0;i--)
-C51 COMPILER V8.06   TEST                                                                  02/04/2018 23:17:32 PAGE 3   
+C51 COMPILER V8.06   TEST                                                                  02/05/2018 13:01:44 PAGE 3   
 
  118   1              {
  119   2      
@@ -150,60 +150,63 @@ line level    source
  137          
  138          void show(uint signalMonth)
  139          {
- 140   1              uchar row,column,i; 
- 141   1              ul rlist=0,clist=0; 
+ 140   1              uchar row,column,i;
+ 141   1              ul rlist=0,clist = 0;
  142   1              uint myMonth;
- 143   1              myMonth=signalMonth;
- 144   1              row = myMonth/32;
- 145   1              column = myMonth%32;
- 146   1              //*
- 147   1              for(i=0;i<row;i++)
+ 143   1              myMonth = signalMonth;
+ 144   1              //row,column设置
+ 145   1              row = myMonth/32;
+ 146   1              column = myMonth%32;
+ 147   1              for(i=0;i<row/8;i++)
  148   1              {
- 149   2                      rlist=1;
- 150   2                      rlist = rlist<<i;
- 151   2                      select(~rlist,0xffff);
- 152   2                      select(~rlist,0xffff0000);
- 153   2              }
- 154   1              for(i=0;i<column;i++)
+ 149   2                      rlist = 0xff;
+ 150   2                      rlist = rlist<<(i*8);
+ 151   2                      select(rlist,0xffffffff);
+ 152   2              }
+ 153   1              rlist=0;        
+ 154   1              for(i=0;i<(row%8);i++)
  155   1              {
- 156   2                      clist<<=1;
- 157   2                      clist |= 0x01;
+ 156   2                      rlist<<=1;
+ 157   2                      rlist= rlist|0x01;
  158   2              }
- 159   1              rlist=1;
- 160   1              rlist=rlist<<row;
- 161   1              select(~rlist,clist&0xffff);
- 162   1              select(~rlist,clist&0xffff0000);
- 163   1              //*/
- 164   1              //select(0xf0f0f0f0,0x0f0f0f0f);
- 165   1      
- 166   1      }
- 167          
- 168          
- 169          void main()
- 170          {
- 171   1              uint monthCount;
- 172   1              uchar i,j;
- 173   1              while(1)
- 174   1              {
- 175   2                      for(i=0;i<128;i++)
- 176   2                      {
- 177   3                              if(i%32 > 7)
- 178   3                                      continue;
- 179   3                              P2=read1302(READ_SEC);
-C51 COMPILER V8.06   TEST                                                                  02/04/2018 23:17:32 PAGE 4   
+ 159   1              rlist=rlist<<(row/8*8);
+ 160   1              select(rlist,0xffffffff);
+ 161   1              for(i=0;i<column;i++)
+ 162   1              {
+ 163   2                      clist<<=1;
+ 164   2                      clist |= 0x01;
+ 165   2              }
+ 166   1              rlist=1;
+ 167   1              rlist<<=row;
+ 168   1              select(rlist,clist);
+ 169   1      }
+ 170          
+ 171          
+ 172          void main()
+ 173          {
+ 174   1              uint monthCount;
+ 175   1              uchar i,j;
+ 176   1              while(1)
+ 177   1              {
+ 178   2                      for(i=0;i<128;i++)
+ 179   2                      {
+C51 COMPILER V8.06   TEST                                                                  02/05/2018 13:01:44 PAGE 4   
 
- 180   3                              monthCount=i;
- 181   3                              j=100;
- 182   3                              while(j--)
- 183   3                                      show(monthCount);
- 184   3                      }
- 185   2                      //monthSet();   
- 186   2              }
- 187   1      }
+ 180   3                              if(i%32 > 7)
+ 181   3                                      continue;
+ 182   3                              P2=read1302(READ_SEC);
+ 183   3                              monthCount=i;
+ 184   3                              j=100;
+ 185   3                              while(j--)
+ 186   3                                      show(monthCount);
+ 187   3                      }
+ 188   2                      //monthSet();   
+ 189   2              }
+ 190   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    624    ----
+   CODE SIZE        =    658    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
