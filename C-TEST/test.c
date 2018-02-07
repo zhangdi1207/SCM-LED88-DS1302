@@ -111,6 +111,7 @@ uchar read1302(uchar addr)	 //BCD??
 	return temp;
 }
 
+<<<<<<< HEAD
 void longToRow(ul dat,uchar arr[4])
 {
 	arr[0]=dat;
@@ -163,6 +164,9 @@ void changeFor788AS()
 }
 
 void select(ul row,ul column)
+=======
+void select(ul row,ul column)		//注意row取反,假设共阴
+>>>>>>> origin/master
 {
 	int i;
 	longToRow(row,row595);
@@ -191,32 +195,49 @@ void select(ul row,ul column)
 
 void show(uint signalMonth)
 {
-	uchar row,column,i; 
-	ul rlist=0,clist=0; 
+	uchar row,column,i;
+	ul rlist=0,clist = 0;
 	uint myMonth;
-	myMonth=signalMonth;
+	myMonth = signalMonth;
+	//row,column设置
 	row = myMonth/32;
 	column = myMonth%32;
+<<<<<<< HEAD
 	/*
 	for(i=0;i<row;i++)
+=======
+	for(i=0;i<row/8;i++)
+>>>>>>> origin/master
 	{
-		rlist=1;
-		rlist = rlist<<i;
-		select(~rlist,0xffff);
-		select(~rlist,0xffff0000);
+		rlist = 0xff;
+		rlist = rlist<<(i*8);
+		select(rlist,0xffffffff);
 	}
+	rlist=0;	
+	for(i=0;i<(row%8);i++)
+	{
+		rlist<<=1;
+		rlist= rlist|0x01;
+	}
+	rlist=rlist<<(row/8*8);
+	select(rlist,0xffffffff);
 	for(i=0;i<column;i++)
 	{
 		clist<<=1;
 		clist |= 0x01;
 	}
 	rlist=1;
+<<<<<<< HEAD
 	rlist=rlist<<row;
 	select(~rlist,clist&0xffff);
 	select(~rlist,clist&0xffff0000);
 	//*/
 	select(0x0,0xffffffff);
 
+=======
+	rlist<<=row;
+	select(rlist,clist);
+>>>>>>> origin/master
 }
 
 
