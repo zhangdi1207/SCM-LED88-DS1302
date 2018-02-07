@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   TEST                                                                  02/04/2018 23:17:32 PAGE 1   
+C51 COMPILER V8.06   TEST                                                                  02/07/2018 22:11:14 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE TEST
@@ -62,7 +62,7 @@ line level    source
   53          sbit SHCP = P3^0;
   54          sbit STCP = P3^1;
   55          sbit ROW0D = P3^2;
-C51 COMPILER V8.06   TEST                                                                  02/04/2018 23:17:32 PAGE 2   
+C51 COMPILER V8.06   TEST                                                                  02/07/2018 22:11:14 PAGE 2   
 
   56          sbit COL0D = P3^3;
   57          sbit ROW1D = P3^6;
@@ -82,135 +82,192 @@ line level    source
   71          sbit DS1302CLK = P1^1;
   72          sbit DS1302IO = P1^2;
   73          
-  74          
-  75          
-  76          
+  74          //Êý¾Ý
+  75          uchar row595[4]={0,0,0,0};
+  76          uchar column595[4]={0,0,0,0};
   77          
-  78          uchar read1302(uchar addr)       //BCD??
-  79          {
-  80   1              uchar i,temp;
-  81   1              DS1302RST=0;
-  82   1              DS1302CLK=0;
-  83   1              DS1302RST=1;
-  84   1              for(i=8;i>0;i--)
-  85   1              {
-  86   2                      DS1302CLK=0;
-  87   2                      DS1302IO=(bit)(addr&0x01);
-  88   2                      DS1302CLK=1;
-  89   2                      addr>>=1;
-  90   2              }
-  91   1              temp=0;
-  92   1              nop();
-  93   1              nop();
-  94   1              for(i=8;i>0;i--)
-  95   1              {  
-  96   2                      temp>>=1;
-  97   2                      DS1302CLK=0;            
-  98   2                      if(DS1302IO)
-  99   2                      {
- 100   3                              temp=temp|0x80;
- 101   3                      }
- 102   2                      DS1302CLK=1;
- 103   2      
- 104   2              }
- 105   1              DS1302RST=0;
- 106   1              DS1302CLK=1;
- 107   1              DS1302IO=0;
- 108   1              DS1302IO=1;
- 109   1              return temp;
- 110   1      }
- 111          
- 112          void select(ul row,ul column)
- 113          {
- 114   1              int i;
- 115   1              row=~row;
- 116   1              column=~column;
- 117   1              for(i=7;i>=0;i--)
-C51 COMPILER V8.06   TEST                                                                  02/04/2018 23:17:32 PAGE 3   
+  78          
+  79          
+  80          uchar read1302(uchar addr)       //BCD??
+  81          {
+  82   1              uchar i,temp;
+  83   1              DS1302RST=0;
+  84   1              DS1302CLK=0;
+  85   1              DS1302RST=1;
+  86   1              for(i=8;i>0;i--)
+  87   1              {
+  88   2                      DS1302CLK=0;
+  89   2                      DS1302IO=(bit)(addr&0x01);
+  90   2                      DS1302CLK=1;
+  91   2                      addr>>=1;
+  92   2              }
+  93   1              temp=0;
+  94   1              nop();
+  95   1              nop();
+  96   1              for(i=8;i>0;i--)
+  97   1              {  
+  98   2                      temp>>=1;
+  99   2                      DS1302CLK=0;            
+ 100   2                      if(DS1302IO)
+ 101   2                      {
+ 102   3                              temp=temp|0x80;
+ 103   3                      }
+ 104   2                      DS1302CLK=1;
+ 105   2      
+ 106   2              }
+ 107   1              DS1302RST=0;
+ 108   1              DS1302CLK=1;
+ 109   1              DS1302IO=0;
+ 110   1              DS1302IO=1;
+ 111   1              return temp;
+ 112   1      }
+ 113          
+ 114          void longToRow(ul dat,uchar arr[4])
+ 115          {
+ 116   1              arr[0]=dat;
+ 117   1              arr[1]=dat>>8;
+C51 COMPILER V8.06   TEST                                                                  02/07/2018 22:11:14 PAGE 3   
 
- 118   1              {
- 119   2      
- 120   2                      ROW0D=(row>>i)&0x01;
- 121   2                      COL0D=(column>>i)&0x01;
- 122   2                      ROW1D=(row>>(i+8))&0x01;
- 123   2                      COL1D=(column>>(i+8))&0x01;
- 124   2                      ROW2D=(row>>(i+16))&0x01;
- 125   2                      COL2D=(column>>(i+16))&0x01;
- 126   2                      ROW3D=(row>>(i+24))&0x01;
- 127   2                      COL3D=(column>>(i+24))&0x01;
- 128   2                      SHCP=0;
- 129   2                      nop();
- 130   2                      SHCP=1;
- 131   2              }
- 132   1              STCP=0;
- 133   1              nop();
- 134   1              nop();
- 135   1              STCP=1;
- 136   1      }
- 137          
- 138          void show(uint signalMonth)
- 139          {
- 140   1              uchar row,column,i; 
- 141   1              ul rlist=0,clist=0; 
- 142   1              uint myMonth;
- 143   1              myMonth=signalMonth;
- 144   1              row = myMonth/32;
- 145   1              column = myMonth%32;
- 146   1              //*
- 147   1              for(i=0;i<row;i++)
- 148   1              {
- 149   2                      rlist=1;
- 150   2                      rlist = rlist<<i;
- 151   2                      select(~rlist,0xffff);
- 152   2                      select(~rlist,0xffff0000);
- 153   2              }
- 154   1              for(i=0;i<column;i++)
- 155   1              {
- 156   2                      clist<<=1;
- 157   2                      clist |= 0x01;
- 158   2              }
- 159   1              rlist=1;
- 160   1              rlist=rlist<<row;
- 161   1              select(~rlist,clist&0xffff);
- 162   1              select(~rlist,clist&0xffff0000);
- 163   1              //*/
- 164   1              //select(0xf0f0f0f0,0x0f0f0f0f);
- 165   1      
- 166   1      }
- 167          
- 168          
- 169          void main()
- 170          {
- 171   1              uint monthCount;
- 172   1              uchar i,j;
- 173   1              while(1)
- 174   1              {
- 175   2                      for(i=0;i<128;i++)
- 176   2                      {
- 177   3                              if(i%32 > 7)
- 178   3                                      continue;
- 179   3                              P2=read1302(READ_SEC);
-C51 COMPILER V8.06   TEST                                                                  02/04/2018 23:17:32 PAGE 4   
+ 118   1              arr[2]=dat>>16;
+ 119   1              arr[3]=dat>>24;                                           
+ 120   1      }
+ 121          
+ 122          void changeFor788AS()
+ 123          {
+ 124   1              uchar i,left,right;
+ 125   1              left=0;
+ 126   1              right=0;
+ 127   1              for(i=0;i<4;i++)
+ 128   1              {
+ 129   2                      if(row595[i]&0x01)              //1->9
+ 130   2                              right=right|0x80;
+ 131   2                      if(row595[i]&0x02)         //2->14
+ 132   2                              right=right|0x04;
+ 133   2                      if(row595[i]&0x04)        //3->8
+ 134   2                              left=left|0x01; 
+ 135   2                      if(row595[i]&0x08)        //4->12
+ 136   2                              right=right|0x10;
+ 137   2                      if(row595[i]&0x10)        //5->1
+ 138   2                              left=left|0x80;
+ 139   2                      if(row595[i]&0x20)        //6->7
+ 140   2                              left=left|0x02;
+ 141   2                      if(row595[i]&0x40)        //7->2
+ 142   2                              left=left|0x40;
+ 143   2                      if(row595[i]&0x80)        //8->5
+ 144   2                              left=left|0x08;
+ 145   2      
+ 146   2                      if(column595[i]&0x01)     //1->13
+ 147   2                              right=right|0x08;
+ 148   2                      if(column595[i]&0x02)     //2->3
+ 149   2                              left=left|0x20;
+ 150   2                      if(column595[i]&0x04)     //3->4
+ 151   2                              left=left|0x10;
+ 152   2                      if(column595[i]&0x08)     //4->10
+ 153   2                              right=right|0x40;
+ 154   2                      if(column595[i]&0x10)     //5->6
+ 155   2                              left=left|0x04;
+ 156   2                      if(column595[i]&0x20)     //6->11
+ 157   2                              right=right|0x20;
+ 158   2                      if(column595[i]&0x40)     //7->15
+ 159   2                              right=right|0x02;
+ 160   2                      if(column595[i]&0x80)     //8->16
+ 161   2                              right=right|0x01;
+ 162   2              }
+ 163   1      }
+ 164          
+ 165          void select(ul row,ul column)
+ 166          {
+ 167   1              int i;
+ 168   1              longToRow(row,row595);
+ 169   1              longToRow(column,column595);
+ 170   1              changeFor788AS();
+ 171   1              for(i=7;i>=0;i--)
+ 172   1              {
+ 173   2      
+ 174   2                      ROW0D=row595[0]&0x01;
+ 175   2                      COL0D=column595[0]&0x01;
+ 176   2                      ROW1D=row595[1]&0x01;
+ 177   2                      COL1D=column595[1]&0x01;
+ 178   2                      ROW2D=row595[2]&0x01;
+ 179   2                      COL2D=column595[2]&0x01;
+C51 COMPILER V8.06   TEST                                                                  02/07/2018 22:11:14 PAGE 4   
 
- 180   3                              monthCount=i;
- 181   3                              j=100;
- 182   3                              while(j--)
- 183   3                                      show(monthCount);
- 184   3                      }
- 185   2                      //monthSet();   
- 186   2              }
- 187   1      }
+ 180   2                      ROW3D=row595[3]&0x01;
+ 181   2                      COL3D=column595[3]&0x01;
+ 182   2                      SHCP=0;
+ 183   2                      nop();
+ 184   2                      SHCP=1;
+ 185   2              }
+ 186   1              STCP=0;
+ 187   1              nop();
+ 188   1              nop();
+ 189   1              STCP=1;
+ 190   1      }
+ 191          
+ 192          void show(uint signalMonth)
+ 193          {
+ 194   1              uchar row,column,i; 
+ 195   1              ul rlist=0,clist=0; 
+ 196   1              uint myMonth;
+ 197   1              myMonth=signalMonth;
+ 198   1              row = myMonth/32;
+ 199   1              column = myMonth%32;
+ 200   1              /*
+ 201   1              for(i=0;i<row;i++)
+ 202   1              {
+ 203   1                      rlist=1;
+ 204   1                      rlist = rlist<<i;
+ 205   1                      select(~rlist,0xffff);
+ 206   1                      select(~rlist,0xffff0000);
+ 207   1              }
+ 208   1              for(i=0;i<column;i++)
+ 209   1              {
+ 210   1                      clist<<=1;
+ 211   1                      clist |= 0x01;
+ 212   1              }
+ 213   1              rlist=1;
+ 214   1              rlist=rlist<<row;
+ 215   1              select(~rlist,clist&0xffff);
+ 216   1              select(~rlist,clist&0xffff0000);
+ 217   1              //*/
+ 218   1              select(0x0,0xffffffff);
+ 219   1      
+ 220   1      }
+*** WARNING C280 IN LINE 194 OF TEST.C: 'i': unreferenced local variable
+ 221          
+ 222          
+ 223          void main()
+ 224          {
+ 225   1              uint monthCount;
+ 226   1              uchar i,j;
+ 227   1              while(1)
+ 228   1              {
+ 229   2                      for(i=0;i<128;i++)
+ 230   2                      {
+ 231   3                              if(i%32 > 7)
+ 232   3                                      continue;
+ 233   3                              P2=read1302(READ_SEC);
+ 234   3                              monthCount=i;
+ 235   3                              j=100;
+ 236   3                              while(j--)
+ 237   3                                      show(monthCount);
+ 238   3                      }
+ 239   2                      //monthSet();   
+ 240   2              }
+C51 COMPILER V8.06   TEST                                                                  02/07/2018 22:11:14 PAGE 5   
+
+ 241   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    624    ----
+   CODE SIZE        =    466    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----      21
+   DATA SIZE        =      8      27
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

@@ -71,7 +71,9 @@ sbit DS1302RST = P1^0;
 sbit DS1302CLK = P1^1;
 sbit DS1302IO = P1^2;
 
-
+//Êý¾Ý
+uchar row595[4]={0,0,0,0};
+uchar column595[4]={0,0,0,0};
 
 
 
@@ -109,22 +111,74 @@ uchar read1302(uchar addr)	 //BCD??
 	return temp;
 }
 
+void longToRow(ul dat,uchar arr[4])
+{
+	arr[0]=dat;
+	arr[1]=dat>>8;
+	arr[2]=dat>>16;
+	arr[3]=dat>>24;						  
+}
+
+void changeFor788AS()
+{
+	uchar i,left,right;
+	left=0;
+	right=0;
+	for(i=0;i<4;i++)
+	{
+		if(row595[i]&0x01)		//1->9
+			right=right|0x80;
+		if(row595[i]&0x02)	   //2->14
+			right=right|0x04;
+		if(row595[i]&0x04)	  //3->8
+			left=left|0x01;	
+		if(row595[i]&0x08)	  //4->12
+			right=right|0x10;
+		if(row595[i]&0x10)	  //5->1
+			left=left|0x80;
+		if(row595[i]&0x20)	  //6->7
+			left=left|0x02;
+		if(row595[i]&0x40)	  //7->2
+			left=left|0x40;
+		if(row595[i]&0x80)	  //8->5
+			left=left|0x08;
+
+		if(column595[i]&0x01)	  //1->13
+			right=right|0x08;
+		if(column595[i]&0x02)	  //2->3
+			left=left|0x20;
+		if(column595[i]&0x04)	  //3->4
+			left=left|0x10;
+		if(column595[i]&0x08)	  //4->10
+			right=right|0x40;
+		if(column595[i]&0x10)	  //5->6
+			left=left|0x04;
+		if(column595[i]&0x20)	  //6->11
+			right=right|0x20;
+		if(column595[i]&0x40)	  //7->15
+			right=right|0x02;
+		if(column595[i]&0x80)	  //8->16
+			right=right|0x01;
+	}
+}
+
 void select(ul row,ul column)
 {
 	int i;
-	row=~row;
-	column=~column;
+	longToRow(row,row595);
+	longToRow(column,column595);
+	changeFor788AS();
 	for(i=7;i>=0;i--)
 	{
 
-		ROW0D=(row>>i)&0x01;
-		COL0D=(column>>i)&0x01;
-		ROW1D=(row>>(i+8))&0x01;
-		COL1D=(column>>(i+8))&0x01;
-		ROW2D=(row>>(i+16))&0x01;
-		COL2D=(column>>(i+16))&0x01;
-		ROW3D=(row>>(i+24))&0x01;
-		COL3D=(column>>(i+24))&0x01;
+		ROW0D=row595[0]&0x01;
+		COL0D=column595[0]&0x01;
+		ROW1D=row595[1]&0x01;
+		COL1D=column595[1]&0x01;
+		ROW2D=row595[2]&0x01;
+		COL2D=column595[2]&0x01;
+		ROW3D=row595[3]&0x01;
+		COL3D=column595[3]&0x01;
 		SHCP=0;
 		nop();
 		SHCP=1;
@@ -143,7 +197,7 @@ void show(uint signalMonth)
 	myMonth=signalMonth;
 	row = myMonth/32;
 	column = myMonth%32;
-	//*
+	/*
 	for(i=0;i<row;i++)
 	{
 		rlist=1;
@@ -161,7 +215,7 @@ void show(uint signalMonth)
 	select(~rlist,clist&0xffff);
 	select(~rlist,clist&0xffff0000);
 	//*/
-	//select(0xf0f0f0f0,0x0f0f0f0f);
+	select(0x0,0xffffffff);
 
 }
 

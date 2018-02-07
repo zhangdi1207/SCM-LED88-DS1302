@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.05                                                        02/04/2018  23:17:32  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.05                                                        02/07/2018  22:11:14  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.05, INVOKED BY:
@@ -11,9 +11,10 @@ MEMORY MODEL: SMALL
 INPUT MODULES INCLUDED:
   test.obj (TEST)
   D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
-  D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C?LNOT)
+  D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C?CSTPTR)
+  D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C?CSTOPTR)
   D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C?ULSHR)
-  D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C?LSHL)
+  D:\PROGRAM FILES\KEIL\C51\LIB\C51S.LIB (?C_INIT)
 
 
 LINK MAP OF MODULE:  test (TEST)
@@ -24,44 +25,53 @@ LINK MAP OF MODULE:  test (TEST)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0015H     UNIT         _DATA_GROUP_
-            IDATA   001DH     0001H     UNIT         ?STACK
+            DATA    0008H     001BH     UNIT         _DATA_GROUP_
+            DATA    0023H     0008H     UNIT         ?DT?TEST
+            IDATA   002BH     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     0103H     UNIT         ?PR?_SHOW?TEST
-            CODE    0106H     0101H     UNIT         ?PR?_SELECT?TEST
-            CODE    0207H     0037H     UNIT         ?PR?MAIN?TEST
-            CODE    023EH     0035H     UNIT         ?PR?_READ1302?TEST
-            CODE    0273H     0033H     UNIT         ?C?LIB_CODE
-            CODE    02A6H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0085H     UNIT         ?PR?CHANGEFOR788AS?TEST
+            CODE    0114H     005EH     UNIT         ?PR?_SELECT?TEST
+            CODE    0172H     0048H     UNIT         ?PR?_LONGTOROW?TEST
+            CODE    01BAH     0047H     UNIT         ?C?LIB_CODE
+            CODE    0201H     003BH     UNIT         ?PR?_SHOW?TEST
+            CODE    023CH     0037H     UNIT         ?PR?MAIN?TEST
+            CODE    0273H     0035H     UNIT         ?PR?_READ1302?TEST
+            CODE    02A8H     000DH     UNIT         ?C_INITSEG
 
 
 
 OVERLAY MAP OF MODULE:   test (TEST)
 
 
-SEGMENT                          DATA_GROUP 
-  +--> CALLED SEGMENT          START    LENGTH
-----------------------------------------------
-?C_C51STARTUP                  -----    -----
+SEGMENT                           DATA_GROUP 
+  +--> CALLED SEGMENT           START    LENGTH
+-----------------------------------------------
+?C_C51STARTUP                   -----    -----
   +--> ?PR?MAIN?TEST
+  +--> ?C_INITSEG
 
-?PR?MAIN?TEST                  0008H    0002H
+?PR?MAIN?TEST                   0008H    0004H
   +--> ?PR?_READ1302?TEST
   +--> ?PR?_SHOW?TEST
 
-?PR?_SHOW?TEST                 000AH    000BH
+?PR?_SHOW?TEST                  000CH    000BH
   +--> ?PR?_SELECT?TEST
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/07/2018  22:11:14  PAGE 2
 
-?PR?_SELECT?TEST               0015H    0008H
+
+
+?PR?_SELECT?TEST                0017H    0008H
+  +--> ?PR?_LONGTOROW?TEST
+  +--> ?PR?CHANGEFOR788AS?TEST
+
+?PR?_LONGTOROW?TEST             001FH    0004H
 
 
 
 SYMBOL TABLE OF MODULE:  test (TEST)
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  23:17:32  PAGE 2
-
-
 
   VALUE           TYPE          NAME
   ----------------------------------
@@ -71,22 +81,25 @@ SYMBOL TABLE OF MODULE:  test (TEST)
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
-  C:0106H         PUBLIC        _select
+  C:0114H         PUBLIC        _select
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
-  C:0207H         PUBLIC        main
+  C:023CH         PUBLIC        main
   B:00B0H.0       PUBLIC        SHCP
+  C:0172H         PUBLIC        _longToRow
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
+  D:0023H         PUBLIC        column595
   B:0090H.1       PUBLIC        DS1302CLK
   B:00B0H.1       PUBLIC        STCP
-  C:0003H         PUBLIC        _show
+  C:0201H         PUBLIC        _show
+  C:008FH         PUBLIC        changeFor788AS
   B:00B0H.3       PUBLIC        COL0D
   B:0090H.4       PUBLIC        COL1D
   B:0090H.5       PUBLIC        COL2D
   B:0090H.6       PUBLIC        COL3D
   B:0090H.0       PUBLIC        DS1302RST
-  C:023EH         PUBLIC        _read1302
+  C:0273H         PUBLIC        _read1302
   D:00C8H         PUBLIC        T2CON
   B:00B0H.2       PUBLIC        ROW0D
   B:00B0H.6       PUBLIC        ROW1D
@@ -94,147 +107,194 @@ SYMBOL TABLE OF MODULE:  test (TEST)
   B:0090H.3       PUBLIC        ROW3D
   B:0090H.2       PUBLIC        DS1302IO
   D:00D0H         PUBLIC        PSW
+  D:0027H         PUBLIC        row595
   -------         PROC          _READ1302
   D:0007H         SYMBOL        addr
   -------         DO            
   D:0006H         SYMBOL        i
   D:0007H         SYMBOL        temp
   -------         ENDDO         
-  C:023EH         LINE#         78
-  C:023EH         LINE#         79
-  C:023EH         LINE#         81
-  C:0240H         LINE#         82
-  C:0242H         LINE#         83
-  C:0244H         LINE#         84
-  C:0246H         LINE#         85
-  C:0246H         LINE#         86
-  C:0248H         LINE#         87
-  C:024CH         LINE#         88
-  C:024EH         LINE#         89
-  C:0252H         LINE#         90
-  C:0254H         LINE#         91
-  C:0256H         LINE#         92
-  C:0257H         LINE#         93
-  C:0258H         LINE#         94
-  C:025AH         LINE#         95
-  C:025AH         LINE#         96
-  C:025EH         LINE#         97
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  23:17:32  PAGE 3
+  C:0273H         LINE#         80
+  C:0273H         LINE#         81
+  C:0273H         LINE#         83
+  C:0275H         LINE#         84
+  C:0277H         LINE#         85
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/07/2018  22:11:14  PAGE 3
 
 
-  C:0260H         LINE#         98
-  C:0263H         LINE#         99
-  C:0263H         LINE#         100
-  C:0266H         LINE#         101
-  C:0266H         LINE#         102
-  C:0268H         LINE#         104
-  C:026AH         LINE#         105
-  C:026CH         LINE#         106
-  C:026EH         LINE#         107
-  C:0270H         LINE#         108
-  C:0272H         LINE#         109
-  C:0272H         LINE#         110
+  C:0279H         LINE#         86
+  C:027BH         LINE#         87
+  C:027BH         LINE#         88
+  C:027DH         LINE#         89
+  C:0281H         LINE#         90
+  C:0283H         LINE#         91
+  C:0287H         LINE#         92
+  C:0289H         LINE#         93
+  C:028BH         LINE#         94
+  C:028CH         LINE#         95
+  C:028DH         LINE#         96
+  C:028FH         LINE#         97
+  C:028FH         LINE#         98
+  C:0293H         LINE#         99
+  C:0295H         LINE#         100
+  C:0298H         LINE#         101
+  C:0298H         LINE#         102
+  C:029BH         LINE#         103
+  C:029BH         LINE#         104
+  C:029DH         LINE#         106
+  C:029FH         LINE#         107
+  C:02A1H         LINE#         108
+  C:02A3H         LINE#         109
+  C:02A5H         LINE#         110
+  C:02A7H         LINE#         111
+  C:02A7H         LINE#         112
   -------         ENDPROC       _READ1302
-  -------         PROC          _SELECT
-  D:0015H         SYMBOL        row
-  D:0019H         SYMBOL        column
+  -------         PROC          _LONGTOROW
+  D:001FH         SYMBOL        dat
+  D:0001H         SYMBOL        arr
+  C:0172H         LINE#         114
+  C:017AH         LINE#         115
+  C:017AH         LINE#         116
+  C:017EH         LINE#         117
+  C:0192H         LINE#         118
+  C:01A6H         LINE#         119
+  -------         ENDPROC       _LONGTOROW
+  -------         PROC          CHANGEFOR788AS
   -------         DO            
-  D:0002H         SYMBOL        i
+  D:0005H         SYMBOL        i
+  D:0007H         SYMBOL        left
+  D:0006H         SYMBOL        right
   -------         ENDDO         
-  C:0106H         LINE#         112
-  C:010EH         LINE#         113
-  C:010EH         LINE#         115
-  C:0119H         LINE#         116
-  C:012CH         LINE#         117
-  C:0130H         LINE#         118
-  C:0130H         LINE#         120
-  C:0148H         LINE#         121
-  C:015EH         LINE#         122
-  C:0177H         LINE#         123
-  C:018DH         LINE#         124
-  C:01A6H         LINE#         125
-  C:01BCH         LINE#         126
-  C:01D5H         LINE#         127
-  C:01EBH         LINE#         128
-  C:01EDH         LINE#         129
-  C:01EEH         LINE#         130
-  C:01F0H         LINE#         131
-  C:0200H         LINE#         132
-  C:0202H         LINE#         133
-  C:0203H         LINE#         134
-  C:0204H         LINE#         135
-  C:0206H         LINE#         136
+  C:008FH         LINE#         122
+  C:008FH         LINE#         123
+  C:008FH         LINE#         125
+  C:0091H         LINE#         126
+  C:0092H         LINE#         127
+  C:0093H         LINE#         128
+  C:0093H         LINE#         129
+  C:009CH         LINE#         130
+  C:009FH         LINE#         131
+  C:00A3H         LINE#         132
+  C:00A6H         LINE#         133
+  C:00AAH         LINE#         134
+  C:00ADH         LINE#         135
+  C:00B1H         LINE#         136
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/07/2018  22:11:14  PAGE 4
+
+
+  C:00B4H         LINE#         137
+  C:00B8H         LINE#         138
+  C:00BBH         LINE#         139
+  C:00BFH         LINE#         140
+  C:00C2H         LINE#         141
+  C:00C6H         LINE#         142
+  C:00C9H         LINE#         143
+  C:00CDH         LINE#         144
+  C:00D0H         LINE#         146
+  C:00D9H         LINE#         147
+  C:00DCH         LINE#         148
+  C:00E0H         LINE#         149
+  C:00E3H         LINE#         150
+  C:00E7H         LINE#         151
+  C:00EAH         LINE#         152
+  C:00EEH         LINE#         153
+  C:00F1H         LINE#         154
+  C:00F5H         LINE#         155
+  C:00F8H         LINE#         156
+  C:00FCH         LINE#         157
+  C:00FFH         LINE#         158
+  C:0103H         LINE#         159
+  C:0106H         LINE#         160
+  C:010AH         LINE#         161
+  C:010DH         LINE#         162
+  C:0113H         LINE#         163
+  -------         ENDPROC       CHANGEFOR788AS
+  -------         PROC          _SELECT
+  D:0004H         SYMBOL        row
+  D:001BH         SYMBOL        column
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0114H         LINE#         165
+  C:0114H         LINE#         166
+  C:0114H         LINE#         168
+  C:011DH         LINE#         169
+  C:012CH         LINE#         170
+  C:012FH         LINE#         171
+  C:0133H         LINE#         172
+  C:0133H         LINE#         174
+  C:0138H         LINE#         175
+  C:013DH         LINE#         176
+  C:0142H         LINE#         177
+  C:0147H         LINE#         178
+  C:014CH         LINE#         179
+  C:0151H         LINE#         180
+  C:0156H         LINE#         181
+  C:015BH         LINE#         182
+  C:015DH         LINE#         183
+  C:015EH         LINE#         184
+  C:0160H         LINE#         185
+  C:016BH         LINE#         186
+  C:016DH         LINE#         187
+  C:016EH         LINE#         188
+  C:016FH         LINE#         189
+  C:0171H         LINE#         190
+BL51 BANKED LINKER/LOCATER V6.05                                                      02/07/2018  22:11:14  PAGE 5
+
+
   -------         ENDPROC       _SELECT
   -------         PROC          _SHOW
   D:0002H         SYMBOL        signalMonth
   -------         DO            
-  D:000AH         SYMBOL        row
-  D:000BH         SYMBOL        column
-  D:000CH         SYMBOL        i
-  D:000DH         SYMBOL        rlist
-  D:0011H         SYMBOL        clist
+  D:000CH         SYMBOL        row
+  D:000DH         SYMBOL        column
+  D:000EH         SYMBOL        i
+  D:000FH         SYMBOL        rlist
+  D:0013H         SYMBOL        clist
   D:0002H         SYMBOL        myMonth
   -------         ENDDO         
-  C:0003H         LINE#         138
-  C:0007H         LINE#         139
-  C:0007H         LINE#         141
-  C:0018H         LINE#         143
-BL51 BANKED LINKER/LOCATER V6.05                                                      02/04/2018  23:17:32  PAGE 4
-
-
-  C:0018H         LINE#         144
-  C:0024H         LINE#         145
-  C:0029H         LINE#         147
-  C:0033H         LINE#         148
-  C:0033H         LINE#         149
-  C:003DH         LINE#         150
-  C:0054H         LINE#         151
-  C:0065H         LINE#         152
-  C:007EH         LINE#         153
-  C:0082H         LINE#         154
-  C:008CH         LINE#         155
-  C:008CH         LINE#         156
-  C:00A1H         LINE#         157
-  C:00B3H         LINE#         158
-  C:00B7H         LINE#         159
-  C:00C1H         LINE#         160
-  C:00D8H         LINE#         161
-  C:00EBH         LINE#         162
+  C:0201H         LINE#         192
+  C:0205H         LINE#         193
+  C:0205H         LINE#         195
+  C:0216H         LINE#         197
+  C:0216H         LINE#         198
+  C:0222H         LINE#         199
+  C:0227H         LINE#         218
   -------         ENDPROC       _SHOW
   -------         PROC          MAIN
   -------         DO            
-  D:0082H         SYMBOL        monthCount
-  D:0008H         SYMBOL        i
-  D:0009H         SYMBOL        j
+  D:0008H         SYMBOL        monthCount
+  D:000AH         SYMBOL        i
+  D:000BH         SYMBOL        j
   -------         ENDDO         
-  C:0207H         LINE#         169
-  C:0207H         LINE#         170
-  C:0207H         LINE#         173
-  C:0207H         LINE#         174
-  C:0207H         LINE#         175
-  C:020AH         LINE#         176
-  C:020AH         LINE#         177
-  C:0213H         LINE#         178
-  C:0213H         LINE#         179
-  C:021AH         LINE#         180
-  C:0220H         LINE#         181
-  C:0223H         LINE#         182
-  C:022AH         LINE#         183
-  C:0233H         LINE#         184
+  C:023CH         LINE#         223
+  C:023CH         LINE#         224
+  C:023CH         LINE#         227
+  C:023CH         LINE#         228
+  C:023CH         LINE#         229
+  C:023FH         LINE#         230
+  C:023FH         LINE#         231
+  C:0248H         LINE#         232
+  C:0248H         LINE#         233
+  C:024FH         LINE#         234
+  C:0255H         LINE#         235
+  C:0258H         LINE#         236
+  C:025FH         LINE#         237
+  C:0268H         LINE#         238
   -------         ENDPROC       MAIN
   -------         ENDMOD        TEST
 
-  -------         MODULE        ?C?LNOT
-  C:0273H         PUBLIC        ?C?LNOT
-  -------         ENDMOD        ?C?LNOT
+  -------         MODULE        ?C?CSTPTR
+  C:01BAH         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+  -------         MODULE        ?C?CSTOPTR
+  C:01CCH         PUBLIC        ?C?CSTOPTR
+  -------         ENDMOD        ?C?CSTOPTR
 
   -------         MODULE        ?C?ULSHR
-  C:0280H         PUBLIC        ?C?ULSHR
+  C:01EEH         PUBLIC        ?C?ULSHR
   -------         ENDMOD        ?C?ULSHR
 
-  -------         MODULE        ?C?LSHL
-  C:0293H         PUBLIC        ?C?LSHL
-  -------         ENDMOD        ?C?LSHL
-
-Program Size: data=30.0 xdata=0 code=690
+Program Size: data=44.0 xdata=0 code=693
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
