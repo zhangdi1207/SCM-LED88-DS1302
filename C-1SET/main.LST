@@ -1,9 +1,9 @@
-C51 COMPILER V8.06   MAIN                                                                  02/05/2018 13:01:12 PAGE 1   
+C51 COMPILER V8.06   MAIN                                                                  02/08/2018 23:08:18 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE MAIN
 OBJECT MODULE PLACED IN main.OBJ
-COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+COMPILER INVOKED BY: D:\Program Files\keil\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
 
 line level    source
 
@@ -13,39 +13,49 @@ line level    source
    4          {
    5   1              ul showCount = 0;
    6   1              uint monthCount = 1;
-   7   1              WDT_CONTR = WDT;
-   8   1              if(!TESTFLAG)
-   9   1                      Delay1s();
-  10   1              //1302³õÊ¼»¯¡¢¶ÁÈ¡MONTH_DATAÎª×îÐÂµÄmonthÊý¾Ý£¬Ã¿´ÎÉè¶¨»òds1302¼ÆÊ±³¬¹ý30Ìì£¬(Éè¶¨monthÊý¾ÝÖÁflash»òÕß30Ì
+   7   1              uint j;
+   8   1              WDT_CONTR = WDT;
+   9   1              if(!TESTFLAG)
+  10   1                      Delay1s();
+  11   1              //1302³õÊ¼»¯¡¢¶ÁÈ¡MONTH_DATAÎª×îÐÂµÄmonthÊý¾Ý£¬Ã¿´ÎÉè¶¨»òds1302¼ÆÊ±³¬¹ý30Ìì£¬(Éè¶¨monthÊý¾ÝÖÁflash»òÕß30Ì
              -ìºómonth+1´æÖÁflash)È»ºó³õÊ¼»¯da1302
-  11   1              initDS1302(0,0,0);
-  12   1              monthCount = eepromInit();
-  13   1              while(1)
-  14   1              {
-  15   2                      //Æô¶¯¿´ÃÅ¹·
-  16   2                      WDT_CONTR = WDT;
-  17   2                      showCount++;
-  18   2      
-  19   2                      if(showCount == (TESTFLAG==1?1:SHOWPRA))
-  20   2                      {
-  21   3                              monthCount = calMonth(monthCount);
-  22   3                              showCount=0;
-  23   3                              P2=read1302(READ_SEC);
-  24   3                      }
-  25   2                      //monthCount=35;
-  26   2                      show(monthCount);
-  27   2                      monthSet();
-  28   2                      
-  29   2              }
-  30   1      }
+  12   1              initDS1302(0,0,0);
+  13   1              monthCount = eepromInit();
+  14   1              if(!TESTFLAG)
+  15   1                      {
+  16   2                              flashMonthChange(1);
+  17   2                              monthCount=1;
+  18   2                      }
+  19   1              while(1)
+  20   1              {
+  21   2                      //Æô¶¯¿´ÃÅ¹·
+  22   2                      WDT_CONTR = WDT;
+  23   2                      showCount++;
+  24   2      
+  25   2                      if(showCount == (TESTFLAG==1?1:SHOWPRA))
+  26   2                      {
+  27   3                              monthCount = calMonth(monthCount);
+  28   3                              showCount=0;
+  29   3                              P2=read1302(READ_SEC);
+  30   3                      }
+  31   2                      if(TESTFLAG)
+  32   2                      {
+  33   3                              monthCount++;
+  34   3                      }
+  35   2                      for(j=0;j<100;j++)
+  36   2                      show(monthCount);
+  37   2                      monthSet();
+  38   2                      
+  39   2              }
+  40   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    114    ----
+   CODE SIZE        =    144    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----       6
+   DATA SIZE        =   ----       8
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

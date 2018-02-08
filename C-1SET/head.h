@@ -54,17 +54,12 @@ sfr WDT_CONTR = 0xc1;
 //行列数据74HC595
 sbit SHCP = P3^0;
 sbit STCP = P3^1;
-sbit ROW0D = P3^2;
-sbit COL0D = P3^3;
-sbit ROW1D = P3^6;
-sbit ROW2D = P3^7;
-sbit ROW3D = P1^3;
-sbit COL1D = P1^4;
-sbit COL2D = P1^5;
-sbit COL3D = P1^6;
+sbit ROWD = P3^2;
+sbit COLD = P3^3;
 
 //按键
-sbit BUTTON = P1^7;
+sbit ROWBUTTON = P3^4;
+sbit COLUMNBUTTON = P3^5;
 
 
 

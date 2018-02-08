@@ -1,21 +1,66 @@
 #include"head.h"
 
+void changeDataTo595(ul dat[])
+{
+	uchar left[4]={0,0,0,0},right[4]={0,0,0,0};
+	uchar i,tempRow,tempColumn;
+	for(i=0;i<4;i++)
+	{
+		tempRow=dat[0]>>(i*8);
+		tempColumn=dat[1]>>(i*8);
+
+		if(tempRow&0x01)  //1->9
+			right[i]|=0x80;
+		if(tempRow&0x02)  //2->14
+			right[i]|=0x04;
+		if(tempRow&0x04)  //3->8
+			left[i]|=0x01;
+		if(tempRow&0x08)  //4->12
+			right[i]|=0x10;
+		if(tempRow&0x10)  //5->1
+			left[i]|=0x80;
+		if(tempRow&0x20)  //6->7
+			left[i]|=0x02;
+		if(tempRow&0x40)  //7->2
+			left[i]|=0x40;
+		if(tempRow&0x80)  //8->5
+			left[i]|=0x08;
+
+		if(tempColumn&0x01) //1->13
+			right[i]|=0x08;
+		if(tempColumn&0x02) //2->3
+			left[i]|=0x20;
+		if(tempColumn&0x04) //3->4
+			left[i]|=0x10;
+		if(tempColumn&0x08) //4->10
+			right[i]|=0x40;
+		if(tempColumn&0x10) //5->6
+			left[i]|=0x04;
+		if(tempColumn&0x20) //6->11
+			right[i]|=0x20;
+		if(tempColumn&0x40) //7->15
+			right[i]|=0x02;
+		if(tempColumn&0x80) //8->16
+			right[i]|=0x01;
+	}
+	dat[0]=left[3]*0x1000000+left[2]*0x10000+left[1]*0x100+left[0];
+	dat[1]=right[3]*0x1000000+right[2]*0x10000+right[1]*0x100+right[0];
+}
 
 void select(ul row,ul column) //注意row需要取反
 {
 	int i;
+	ul hc595Data[2];
+	ul left,right;
 	row = ~row;
-	for(i=7;i>=0;i--)
+	hc595Data[0]=row;
+	hc595Data[1]=column;
+	changeDataTo595(hc595Data);
+	left=hc595Data[0],right=hc595Data[1];
+	for(i=31;i>=0;i--)
 	{
-
-		ROW0D=(row>>i)&0x01;
-		COL0D=(column>>i)&0x01;
-		ROW1D=(row>>(i+8))&0x01;
-		COL1D=(column>>(i+8))&0x01;
-		ROW2D=(row>>(i+16))&0x01;
-		COL2D=(column>>(i+16))&0x01;
-		ROW3D=(row>>(i+24))&0x01;
-		COL3D=(column>>(i+24))&0x01;
+		ROWD=(left>>i)&0x01;
+		COLD=(right>>i)&0x01;
 		SHCP=0;
 		nop();
 		SHCP=1;
@@ -32,7 +77,7 @@ void show(uint signalMonth)	//每次显示8行
 	uchar row,column,i;
 	ul rlist=0,clist = 0;
 	uint myMonth;
-	myMonth = signalMonth;
+	myMonth = signalMonth%1024;
 	//row,column设置
 	row = myMonth/32;
 	column = myMonth%32;
@@ -41,7 +86,7 @@ void show(uint signalMonth)	//每次显示8行
 		rlist = 0xff;
 		rlist = rlist<<(i*8);
 		select(rlist,0xffffffff);
-	}
+	}						  
 	rlist=0;	
 	for(i=0;i<(row%8);i++)
 	{
@@ -59,32 +104,3 @@ void show(uint signalMonth)	//每次显示8行
 	rlist<<=row;
 	select(rlist,clist);
 }
-/*
-void show(uint signalMonth)	//每次显示半行
-{
-	uchar row,column,i; 
-	ul rlist=0,clist=0; 
-	uint myMonth;
-	myMonth=signalMonth;
-	row = myMonth/32;
-	column = myMonth%32;
-	for(i=0;i<row;i++)
-	{
-		rlist=1;
-		rlist = rlist<<i;
-		select(rlist,0xffff);
-		select(rlist,0xffff0000);
-	}
-	for(i=0;i<column;i++)
-	{
-		clist<<=1;
-		clist |= 0x01;
-	}
-	rlist=1;
-	rlist=rlist<<row;
-	select(rlist,clist&0xffff);
-	select(rlist,clist&0xffff0000);
-
-
-}
-//*/

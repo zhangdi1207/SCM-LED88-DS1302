@@ -2,6 +2,7 @@
 "delay.obj",
 "flashOpertion.obj",
 "DS1302.obj",
-"led.obj" 
+"led.obj",
+"monthSet.obj" 
 TO "DS1302" 
 RAMSIZE(256) 
