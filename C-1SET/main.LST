@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   MAIN                                                                  02/08/2018 23:08:18 PAGE 1   
+C51 COMPILER V8.06   MAIN                                                                  02/10/2018 13:11:56 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE MAIN
@@ -13,7 +13,7 @@ line level    source
    4          {
    5   1              ul showCount = 0;
    6   1              uint monthCount = 1;
-   7   1              uint j;
+   7   1              uint i=0,j=0;
    8   1              WDT_CONTR = WDT;
    9   1              if(!TESTFLAG)
   10   1                      Delay1s();
@@ -21,7 +21,7 @@ line level    source
              -旌髆onth+1存至flash)然后初始化da1302
   12   1              initDS1302(0,0,0);
   13   1              monthCount = eepromInit();
-  14   1              if(!TESTFLAG)
+  14   1              if(TESTFLAG)
   15   1                      {
   16   2                              flashMonthChange(1);
   17   2                              monthCount=1;
@@ -31,31 +31,31 @@ line level    source
   21   2                      //启动看门狗
   22   2                      WDT_CONTR = WDT;
   23   2                      showCount++;
-  24   2      
-  25   2                      if(showCount == (TESTFLAG==1?1:SHOWPRA))
-  26   2                      {
-  27   3                              monthCount = calMonth(monthCount);
-  28   3                              showCount=0;
-  29   3                              P2=read1302(READ_SEC);
-  30   3                      }
-  31   2                      if(TESTFLAG)
-  32   2                      {
-  33   3                              monthCount++;
-  34   3                      }
-  35   2                      for(j=0;j<100;j++)
-  36   2                      show(monthCount);
-  37   2                      monthSet();
+  24   2                      //show(read1302(READ_SEC));
+  25   2                      /*
+  26   2                      if(showCount == (TESTFLAG?1:SHOWPRA))
+  27   2                      {
+  28   2                              monthCount = calMonth(monthCount);
+  29   2                              showCount=0;
+  30   2                              //P2=read1302(READ_SEC);
+  31   2                      }
+  32   2                      */
+  33   2                      monthCount = calMonth(monthCount);
+  34   2                      for(j=0;j<2;j++)
+  35   2                              show(monthCount);
+  36   2                      monthSet();
+  37   2      
   38   2                      
   39   2              }
   40   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    144    ----
+   CODE SIZE        =    121    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----       8
+   DATA SIZE        =   ----      10
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

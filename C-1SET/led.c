@@ -77,6 +77,7 @@ void show(uint signalMonth)	//每次显示8行
 	uchar row,column,i;
 	ul rlist=0,clist = 0;
 	uint myMonth;
+	WDT_CONTR = WDT;
 	myMonth = signalMonth%1024;
 	//row,column设置
 	row = myMonth/32;

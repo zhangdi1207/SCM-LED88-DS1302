@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   DELAY                                                                 02/08/2018 23:08:18 PAGE 1   
+C51 COMPILER V8.06   DELAY                                                                 02/10/2018 13:11:57 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE DELAY
@@ -62,7 +62,7 @@ line level    source
   53   1      }
 
 
-C51 COMPILER V8.06   DELAY                                                                 02/08/2018 23:08:18 PAGE 2   
+C51 COMPILER V8.06   DELAY                                                                 02/10/2018 13:11:57 PAGE 2   
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =     40    ----

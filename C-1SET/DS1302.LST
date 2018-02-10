@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   DS1302                                                                02/08/2018 23:08:19 PAGE 1   
+C51 COMPILER V8.06   DS1302                                                                02/10/2018 13:11:57 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE DS1302
@@ -62,7 +62,7 @@ line level    source
   53   1              {
   54   2                      DS1302CLK=0;
   55   2                      DS1302IO=(bit)(addr&0x01);
-C51 COMPILER V8.06   DS1302                                                                02/08/2018 23:08:19 PAGE 2   
+C51 COMPILER V8.06   DS1302                                                                02/10/2018 13:11:57 PAGE 2   
 
   56   2                      DS1302CLK=1;
   57   2                      addr>>=1;
@@ -125,8 +125,8 @@ line level    source
  114   1              else
  115   1              {
  116   2                      date = read1302(READ_SEC);
- 117   2                      if(date == 0x01)
-C51 COMPILER V8.06   DS1302                                                                02/08/2018 23:08:19 PAGE 3   
+ 117   2                      if(date >= 0x03)
+C51 COMPILER V8.06   DS1302                                                                02/10/2018 13:11:57 PAGE 3   
 
  118   2                      {
  119   3                              month+=1;
@@ -141,7 +141,7 @@ line level    source
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    217    ----
+   CODE SIZE        =    220    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

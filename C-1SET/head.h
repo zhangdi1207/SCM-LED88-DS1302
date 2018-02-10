@@ -58,15 +58,15 @@ sbit ROWD = P3^2;
 sbit COLD = P3^3;
 
 //按键
-sbit ROWBUTTON = P3^4;
-sbit COLUMNBUTTON = P3^5;
+sbit ROWBUTTON = P3^6;
+sbit COLUMNBUTTON = P3^7;
 
 
 
 //DS1302数据线
-sbit DS1302RST = P1^0;
-sbit DS1302CLK = P1^1;
-sbit DS1302IO = P1^2;
+sbit DS1302RST = P1^2;
+sbit DS1302CLK = P1^3;
+sbit DS1302IO = P1^4;
 
 //所需函数
 void Delay40us();
