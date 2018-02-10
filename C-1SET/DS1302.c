@@ -114,7 +114,7 @@ uint calMonth(uint month)
 	else
 	{
 		date = read1302(READ_SEC);
-		if(date >= 0x03)
+		if(date >= 0x15)
 		{
 			month+=1;
 			if(month > 1024)

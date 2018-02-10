@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   MAIN                                                                  02/10/2018 13:11:56 PAGE 1   
+C51 COMPILER V8.06   MAIN                                                                  02/10/2018 14:38:24 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE MAIN
@@ -44,14 +44,15 @@ line level    source
   34   2                      for(j=0;j<2;j++)
   35   2                              show(monthCount);
   36   2                      monthSet();
-  37   2      
-  38   2                      
-  39   2              }
-  40   1      }
+  37   2                      monthCount = eepromInit();
+  38   2      
+  39   2                      
+  40   2              }
+  41   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    121    ----
+   CODE SIZE        =    128    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

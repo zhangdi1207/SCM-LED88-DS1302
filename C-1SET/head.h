@@ -37,7 +37,7 @@
 #define OR_SEC 00
 
 #define SHOWPRA 100000 //显示多少次统计一下时间
-
+#define MONTHSETCOUNT 5 //设置月份时灯闪烁多少次后锁定数据
 #define TESTFLAG 1
 
 

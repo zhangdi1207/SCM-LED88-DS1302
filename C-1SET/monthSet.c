@@ -26,70 +26,60 @@ uchar judge()
 
 void rowSet()
 {
-	uint halfCount=100,changeCount=30; //闪烁效果显示halfCount次关闭显示，如果30次闪烁数据不再变化则锁定该改变
+	uint halfCount=100,changeCount=MONTHSETCOUNT; //闪烁效果显示halfCount次关闭显示，如果30次闪烁数据不再变化则锁定该改变
 	uint month;//,i,j;
 	bit changeFlag=0;
 	month = eepromInit();
-	do
+	changeCount=MONTHSETCOUNT;
+	while(changeCount--)
 	{
-		changeCount=30;
-		while(changeCount--)
+		for(halfCount=100;halfCount>0;halfCount--)
 		{
-			for(halfCount=100;halfCount>0;halfCount--)
-			{
-				show(month);
-			}
-			for(halfCount=100;halfCount>0;halfCount--)
-			{
-				show(0);
-			}
-			if(1==judge())
-			{
-				month+=32;
-				month%=1024;
-				flashMonthChange(month);
-				initDS1302(0,0,0);
-				changeFlag=1;
-				break;
-			}
+			show(month);
+		}
+		for(halfCount=100;halfCount>0;halfCount--)
+		{
+			show(0);
+		}
+		if(1==judge())
+		{
+			month+=32;
+			month%=1024;
+			flashMonthChange(month);
+			initDS1302(0,0,0);
+			changeCount=MONTHSETCOUNT;
 		}
 	}
-	while(changeFlag);	
 }
 
 void columnSet()
 {
-	uint halfCount=100,changeCount=30; //闪烁效果显示halfCount次关闭显示，如果30次闪烁数据不再变化则锁定该改变
+	uint halfCount=100,changeCount=MONTHSETCOUNT; //闪烁效果显示halfCount次关闭显示，如果changeCount次闪烁数据不再变化则锁定该改变
 	uint month;//,i,j;
 	bit changeFlag=0;
 	month = eepromInit();
-	do
+	changeCount=MONTHSETCOUNT;
+	while(changeCount-- && ROWBUTTON)
 	{
-		changeCount=30;
-		while(changeCount--)
+		for(halfCount=100;halfCount>0;halfCount--)
 		{
-			for(halfCount=100;halfCount>0;halfCount--)
-			{
-				show(month);
-			}
-			for(halfCount=100;halfCount>0;halfCount--)
-			{
-				show(0);
-			}
-			if(2==judge())
-			{
-				if(month%32==0)
-					month-=31;
-				else
-					month++;
-				flashMonthChange(month);
-				initDS1302(0,0,0);
-				changeFlag=1;
-				break;
-			}
+			show(month);
 		}
-	}
-	while(changeFlag);	
+		for(halfCount=100;halfCount>0;halfCount--)
+		{
+			show(0);
+		}
+		if(2==judge())
+		{
+			if(month%32==0)
+				month-=31;
+			else
+				month++;
+			flashMonthChange(month);
+			initDS1302(0,0,0);
+			changeCount=MONTHSETCOUNT;
+		}
+	}	
 }
 
 

@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   MONTHSET                                                              02/10/2018 13:11:57 PAGE 1   
+C51 COMPILER V8.06   MONTHSET                                                              02/10/2018 14:38:24 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE MONTHSET
@@ -35,90 +35,80 @@ line level    source
   26          
   27          void rowSet()
   28          {
-  29   1              uint halfCount=100,changeCount=30; //ÉÁË¸Ð§¹ûÏÔÊ¾halfCount´Î¹Ø±ÕÏÔÊ¾£¬Èç¹û30´ÎÉÁË¸Êý¾Ý²»ÔÙ±ä»¯ÔòËø¶¨¸Ã¸Ä±
-             -ä
+  29   1              uint halfCount=100,changeCount=MONTHSETCOUNT; //ÉÁË¸Ð§¹ûÏÔÊ¾halfCount´Î¹Ø±ÕÏÔÊ¾£¬Èç¹û30´ÎÉÁË¸Êý¾Ý²»ÔÙ±ä»¯
+             -ÔòËø¶¨¸Ã¸Ä±ä
   30   1              uint month;//,i,j;
   31   1              bit changeFlag=0;
   32   1              month = eepromInit();
-  33   1              do
-  34   1              {
-  35   2                      changeCount=30;
-  36   2                      while(changeCount--)
+  33   1              changeCount=MONTHSETCOUNT;
+  34   1              while(changeCount--)
+  35   1              {
+  36   2                      for(halfCount=100;halfCount>0;halfCount--)
   37   2                      {
-  38   3                              for(halfCount=100;halfCount>0;halfCount--)
-  39   3                              {
-  40   4                                      show(month);
-  41   4                              }
-  42   3                              for(halfCount=100;halfCount>0;halfCount--)
-  43   3                              {
-  44   4                                      show(0);
-  45   4                              }
-  46   3                              if(1==judge())
-  47   3                              {
-  48   4                                      month+=32;
-  49   4                                      month%=1024;
-  50   4                                      flashMonthChange(month);
-  51   4                                      initDS1302(0,0,0);
-  52   4                                      changeFlag=1;
-  53   4                                      break;
-  54   4                              }
-C51 COMPILER V8.06   MONTHSET                                                              02/10/2018 13:11:57 PAGE 2   
+  38   3                              show(month);
+  39   3                      }
+  40   2                      for(halfCount=100;halfCount>0;halfCount--)
+  41   2                      {
+  42   3                              show(0);
+  43   3                      }
+  44   2                      if(1==judge())
+  45   2                      {
+  46   3                              month+=32;
+  47   3                              month%=1024;
+  48   3                              flashMonthChange(month);
+  49   3                              initDS1302(0,0,0);
+  50   3                              changeCount=MONTHSETCOUNT;
+  51   3                      }
+  52   2              }
+  53   1      }
+  54          
+C51 COMPILER V8.06   MONTHSET                                                              02/10/2018 14:38:24 PAGE 2   
 
-  55   3                      }
-  56   2              }
-  57   1              while(changeFlag);      
-  58   1      }
-  59          
-  60          void columnSet()
-  61          {
-  62   1              uint halfCount=100,changeCount=30; //ÉÁË¸Ð§¹ûÏÔÊ¾halfCount´Î¹Ø±ÕÏÔÊ¾£¬Èç¹û30´ÎÉÁË¸Êý¾Ý²»ÔÙ±ä»¯ÔòËø¶¨¸Ã¸Ä±
-             -ä
-  63   1              uint month;//,i,j;
-  64   1              bit changeFlag=0;
-  65   1              month = eepromInit();
-  66   1              do
-  67   1              {
-  68   2                      changeCount=30;
-  69   2                      while(changeCount--)
-  70   2                      {
-  71   3                              for(halfCount=100;halfCount>0;halfCount--)
-  72   3                              {
-  73   4                                      show(month);
-  74   4                              }
-  75   3                              for(halfCount=100;halfCount>0;halfCount--)
-  76   3                              {
-  77   4                                      show(0);
-  78   4                              }
-  79   3                              if(2==judge())
-  80   3                              {
-  81   4                                      if(month%32==0)
-  82   4                                              month-=31;
-  83   4                                      else
-  84   4                                              month++;
-  85   4                                      flashMonthChange(month);
-  86   4                                      initDS1302(0,0,0);
-  87   4                                      changeFlag=1;
-  88   4                                      break;
-  89   4                              }
-  90   3                      }
-  91   2              }
-  92   1              while(changeFlag);      
-  93   1      }
-  94          
-  95          
-  96          
-  97          
-  98          
-  99          void monthSet()
- 100          {
- 101   1              uchar setFlag=0;
- 102   1              setFlag=judge();
- 103   1              if(setFlag==1)
- 104   1                      rowSet();
- 105   1              else if(setFlag==2)
- 106   1                      columnSet();
- 107   1              
- 108   1      }
+  55          void columnSet()
+  56          {
+  57   1              uint halfCount=100,changeCount=MONTHSETCOUNT; //ÉÁË¸Ð§¹ûÏÔÊ¾halfCount´Î¹Ø±ÕÏÔÊ¾£¬Èç¹ûchangeCount´ÎÉÁË¸Êý¾
+             -Ý²»ÔÙ±ä»¯ÔòËø¶¨¸Ã¸Ä±ä
+  58   1              uint month;//,i,j;
+  59   1              bit changeFlag=0;
+  60   1              month = eepromInit();
+  61   1              changeCount=MONTHSETCOUNT;
+  62   1              while(changeCount-- && ROWBUTTON)
+  63   1              {
+  64   2                      for(halfCount=100;halfCount>0;halfCount--)
+  65   2                      {
+  66   3                              show(month);
+  67   3                      }
+  68   2                      for(halfCount=100;halfCount>0;halfCount--)
+  69   2                      {
+  70   3                              show(0);
+  71   3                      }
+  72   2                      if(2==judge())
+  73   2                      {
+  74   3                              if(month%32==0)
+  75   3                                      month-=31;
+  76   3                              else
+  77   3                                      month++;
+  78   3                              flashMonthChange(month);
+  79   3                              initDS1302(0,0,0);
+  80   3                              changeCount=MONTHSETCOUNT;
+  81   3                      }
+  82   2              }       
+  83   1      }
+  84          
+  85          
+  86          
+  87          
+  88          
+  89          void monthSet()
+  90          {
+  91   1              uchar setFlag=0;
+  92   1              setFlag=judge();
+  93   1              if(setFlag==1)
+  94   1                      rowSet();
+  95   1              else if(setFlag==2)
+  96   1                      columnSet();
+  97   1              
+  98   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
@@ -126,8 +116,6 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-C51 COMPILER V8.06   MONTHSET                                                              02/10/2018 13:11:57 PAGE 3   
-
    DATA SIZE        =   ----      14
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----       2

@@ -1,4 +1,4 @@
-C51 COMPILER V8.06   LED                                                                   02/10/2018 13:11:57 PAGE 1   
+C51 COMPILER V8.06   LED                                                                   02/10/2018 14:38:24 PAGE 1   
 
 
 C51 COMPILER V8.06, COMPILATION OF MODULE LED
@@ -62,7 +62,7 @@ line level    source
   53   1              ul hc595Data[2];
   54   1              ul left,right;
   55   1              row = ~row;
-C51 COMPILER V8.06   LED                                                                   02/10/2018 13:11:57 PAGE 2   
+C51 COMPILER V8.06   LED                                                                   02/10/2018 14:38:24 PAGE 2   
 
   56   1              hc595Data[0]=row;
   57   1              hc595Data[1]=column;
@@ -126,7 +126,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    DATA SIZE        =   ----      48
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
-C51 COMPILER V8.06   LED                                                                   02/10/2018 13:11:57 PAGE 3   
+C51 COMPILER V8.06   LED                                                                   02/10/2018 14:38:24 PAGE 3   
 
 END OF MODULE INFORMATION.
 
