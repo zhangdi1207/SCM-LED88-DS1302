@@ -1,0 +1,9 @@
+Added Room: Name=DS1302
+Removed Pin From Net: NetName=V3-3 Pin=U1-10
+Added Pin To Net: NetName=V3-2 Pin=U1-10
+Removed Pin From Net: NetName=V3-4 Pin=U4-10
+Added Pin To Net: NetName=V3-5 Pin=U4-10
+Removed Pin From Net: NetName=V3-2 Pin=U7-10
+Added Pin To Net: NetName=V3-1 Pin=U7-10
+Removed Pin From Net: NetName=V3-2 Pin=U8-10
+Added Pin To Net: NetName=V3-1 Pin=U8-10

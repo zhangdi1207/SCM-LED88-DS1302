@@ -1,0 +1,6 @@
+Added Component: Designator=DC005(DC005)
+Added Pin To Net: NetName=VCC Pin=DC005-1
+Added Pin To Net: NetName=GND Pin=DC005-2
+Added Pin To Net: NetName=GND Pin=DC005-3
+Added Member To Class: ClassName=DS1302 Member=Component DC005
+Added Room: Name=DS1302
