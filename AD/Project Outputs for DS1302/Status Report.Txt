@@ -1,0 +1,11 @@
+Output: Simple BOM
+Type  : SimpleBOM
+From  : Project [DS1302.PRJPCB]
+   Generated File[DS1302.BOM]
+   Generated File[DS1302.CSV]
+
+
+Files Generated   : 2
+Documents Printed : 0
+
+Finished Output Generation At 16:32:39 On 2018/2/11

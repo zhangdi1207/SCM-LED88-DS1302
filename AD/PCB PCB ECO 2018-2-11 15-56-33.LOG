@@ -1,0 +1,18 @@
+Added Component: Designator=LED8-8-1(LED8-8)
+Added Pin To Net: NetName=ROW1 Pin=LED8-8-1-1
+Added Pin To Net: NetName=ROW2 Pin=LED8-8-1-2
+Added Pin To Net: NetName=ROW3 Pin=LED8-8-1-3
+Added Pin To Net: NetName=ROW4 Pin=LED8-8-1-4
+Added Pin To Net: NetName=ROW5 Pin=LED8-8-1-5
+Added Pin To Net: NetName=ROW6 Pin=LED8-8-1-6
+Added Pin To Net: NetName=ROW7 Pin=LED8-8-1-7
+Added Pin To Net: NetName=ROW8 Pin=LED8-8-1-8
+Added Pin To Net: NetName=COL8 Pin=LED8-8-1-9
+Added Pin To Net: NetName=COL7 Pin=LED8-8-1-10
+Added Pin To Net: NetName=COL6 Pin=LED8-8-1-11
+Added Pin To Net: NetName=COL5 Pin=LED8-8-1-12
+Added Pin To Net: NetName=COL4 Pin=LED8-8-1-13
+Added Pin To Net: NetName=COL3 Pin=LED8-8-1-14
+Added Pin To Net: NetName=COL2 Pin=LED8-8-1-15
+Added Pin To Net: NetName=COL1 Pin=LED8-8-1-16
+Added Member To Class: ClassName=DS1302 Member=Component LED8-8-1 LED1

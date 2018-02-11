@@ -52,7 +52,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 
 [Document3]
-DocumentPath=C:\Program Files\Altium Designer 6\Library\Dallas Semiconductor\Dallas Peripheral Real Time Clock.IntLib
+DocumentPath=D:\Program Files (x86)\Altium Designer 6\Library\Dallas Semiconductor\Dallas Peripheral Real Time Clock.IntLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -64,6 +64,99 @@ DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
 ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
+
+[Document4]
+DocumentPath=PCB.PcbDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+
+[Document5]
+DocumentPath=PcbLib1.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+
+[Document6]
+DocumentPath=D:\Program Files (x86)\Altium Designer 6\Library\Pcb\Surface Mount\SOT23_L.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+
+[Document7]
+DocumentPath=D:\Program Files (x86)\Altium Designer 6\Library\Pcb\Surface Mount\SOT23_M.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+
+[Document8]
+DocumentPath=D:\Program Files (x86)\Altium Designer 6\Library\Pcb\Miscellaneous Devices PCB.PcbLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+
+[Document9]
+DocumentPath=D:\Program Files (x86)\Altium Designer 6\Library\Miscellaneous Devices.IntLib
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+
+[GeneratedDocument1]
+DocumentPath=Project Outputs for DS1302\DS1302.BOM
+
+[GeneratedDocument2]
+DocumentPath=Project Outputs for DS1302\DS1302.CSV
+
+[GeneratedDocument3]
+DocumentPath=PCB.PCB3D
 
 [OutputGroup1]
 Name=Netlist Outputs
@@ -307,14 +400,16 @@ Name=Report Outputs
 Description=
 TargetPrinter=Microsoft XPS Document Writer
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
-OutputType1=BOM_PartType
-OutputName1=Bill of Materials
+OutputType1=SimpleBOM
+OutputName1=Simple BOM
 OutputDocumentPath1=
 OutputVariantName1=
 OutputEnabled1=1
 OutputDefault1=0
-OutputType2=ComponentCrossReference
-OutputName2=Component Cross Reference Report
+Configuration1_Name1=OutputConfigurationParameter1
+Configuration1_Item1=Record=SimpleBOMView|SimpleBOMMode=0
+OutputType2=SinglePinNetReporter
+OutputName2=Report Single Pin Nets
 OutputDocumentPath2=
 OutputVariantName2=
 OutputEnabled2=1
@@ -325,14 +420,14 @@ OutputDocumentPath3=
 OutputVariantName3=
 OutputEnabled3=1
 OutputDefault3=0
-OutputType4=SimpleBOM
-OutputName4=Simple BOM
+OutputType4=BOM_PartType
+OutputName4=Bill of Materials
 OutputDocumentPath4=
 OutputVariantName4=
 OutputEnabled4=1
 OutputDefault4=0
-OutputType5=SinglePinNetReporter
-OutputName5=Report Single Pin Nets
+OutputType5=ComponentCrossReference
+OutputName5=Component Cross Reference Report
 OutputDocumentPath5=
 OutputVariantName5=
 OutputEnabled5=1
@@ -791,4 +886,7 @@ ComparisonOptions1=Kind=Net Class|MinPercent=75|MinMatch=3|ShowMatch=-1|Confirm=
 ComparisonOptions2=Kind=Component Class|MinPercent=75|MinMatch=3|ShowMatch=-1|Confirm=-1|UseName=-1|InclAllRules=0
 ComparisonOptions3=Kind=Rule|MinPercent=75|MinMatch=3|ShowMatch=-1|Confirm=-1|UseName=-1|InclAllRules=0
 ComparisonOptions4=Kind=Differential Pair|MinPercent=50|MinMatch=1|ShowMatch=0|Confirm=0|UseName=0|InclAllRules=0
+
+[SmartPDF]
+PageOptions=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=A4|PrintScaleMode=1
 

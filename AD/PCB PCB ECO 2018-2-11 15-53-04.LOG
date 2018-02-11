@@ -1,0 +1,54 @@
+Added Component: Designator=LED8-8-2(LED8-8)
+Added Component: Designator=LED8-8-3(LED8-8)
+Added Component: Designator=LED8-8-4(LED8-8)
+Added Pin To Net: NetName=ROW1 Pin=LED8-8-2-1
+Added Pin To Net: NetName=ROW2 Pin=LED8-8-2-2
+Added Pin To Net: NetName=ROW3 Pin=LED8-8-2-3
+Added Pin To Net: NetName=ROW4 Pin=LED8-8-2-4
+Added Pin To Net: NetName=ROW5 Pin=LED8-8-2-5
+Added Pin To Net: NetName=ROW6 Pin=LED8-8-2-6
+Added Pin To Net: NetName=ROW7 Pin=LED8-8-2-7
+Added Pin To Net: NetName=ROW8 Pin=LED8-8-2-8
+Added Pin To Net: NetName=COL16 Pin=LED8-8-2-9
+Added Pin To Net: NetName=COL15 Pin=LED8-8-2-10
+Added Pin To Net: NetName=COL14 Pin=LED8-8-2-11
+Added Pin To Net: NetName=COL13 Pin=LED8-8-2-12
+Added Pin To Net: NetName=COL12 Pin=LED8-8-2-13
+Added Pin To Net: NetName=COL11 Pin=LED8-8-2-14
+Added Pin To Net: NetName=COL10 Pin=LED8-8-2-15
+Added Pin To Net: NetName=COL9 Pin=LED8-8-2-16
+Added Pin To Net: NetName=ROW1 Pin=LED8-8-3-1
+Added Pin To Net: NetName=ROW2 Pin=LED8-8-3-2
+Added Pin To Net: NetName=ROW3 Pin=LED8-8-3-3
+Added Pin To Net: NetName=ROW4 Pin=LED8-8-3-4
+Added Pin To Net: NetName=ROW5 Pin=LED8-8-3-5
+Added Pin To Net: NetName=ROW6 Pin=LED8-8-3-6
+Added Pin To Net: NetName=ROW7 Pin=LED8-8-3-7
+Added Pin To Net: NetName=ROW8 Pin=LED8-8-3-8
+Added Pin To Net: NetName=COL24 Pin=LED8-8-3-9
+Added Pin To Net: NetName=COL23 Pin=LED8-8-3-10
+Added Pin To Net: NetName=COL22 Pin=LED8-8-3-11
+Added Pin To Net: NetName=COL21 Pin=LED8-8-3-12
+Added Pin To Net: NetName=COL20 Pin=LED8-8-3-13
+Added Pin To Net: NetName=COL19 Pin=LED8-8-3-14
+Added Pin To Net: NetName=COL18 Pin=LED8-8-3-15
+Added Pin To Net: NetName=COL17 Pin=LED8-8-3-16
+Added Pin To Net: NetName=ROW1 Pin=LED8-8-4-1
+Added Pin To Net: NetName=ROW2 Pin=LED8-8-4-2
+Added Pin To Net: NetName=ROW3 Pin=LED8-8-4-3
+Added Pin To Net: NetName=ROW4 Pin=LED8-8-4-4
+Added Pin To Net: NetName=ROW5 Pin=LED8-8-4-5
+Added Pin To Net: NetName=ROW6 Pin=LED8-8-4-6
+Added Pin To Net: NetName=ROW7 Pin=LED8-8-4-7
+Added Pin To Net: NetName=ROW8 Pin=LED8-8-4-8
+Added Pin To Net: NetName=COL32 Pin=LED8-8-4-9
+Added Pin To Net: NetName=COL31 Pin=LED8-8-4-10
+Added Pin To Net: NetName=COL30 Pin=LED8-8-4-11
+Added Pin To Net: NetName=COL29 Pin=LED8-8-4-12
+Added Pin To Net: NetName=COL28 Pin=LED8-8-4-13
+Added Pin To Net: NetName=COL27 Pin=LED8-8-4-14
+Added Pin To Net: NetName=COL26 Pin=LED8-8-4-15
+Added Pin To Net: NetName=COL25 Pin=LED8-8-4-16
+Added Member To Class: ClassName=DS1302 Member=Component LED8-8-2 LED2
+Added Member To Class: ClassName=DS1302 Member=Component LED8-8-3 LED3
+Added Member To Class: ClassName=DS1302 Member=Component LED8-8-4 LED4

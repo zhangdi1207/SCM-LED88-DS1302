@@ -1,0 +1,72 @@
+Added Component: Designator=U5(DIP16)
+Added Component: Designator=U6(DIP16)
+Added Component: Designator=U7(DIP16)
+Added Component: Designator=U8(DIP16)
+Added Pin To Net: NetName=COL2 Pin=U5-1
+Added Pin To Net: NetName=COL3 Pin=U5-2
+Added Pin To Net: NetName=COL4 Pin=U5-3
+Added Pin To Net: NetName=COL5 Pin=U5-4
+Added Pin To Net: NetName=COL6 Pin=U5-5
+Added Pin To Net: NetName=COL7 Pin=U5-6
+Added Pin To Net: NetName=COL8 Pin=U5-7
+Added Pin To Net: NetName=GND Pin=U5-8
+Added Pin To Net: NetName=NetU5_9 Pin=U5-9
+Added Pin To Net: NetName=V3-1 Pin=U5-10
+Added Pin To Net: NetName=SHCP Pin=U5-11
+Added Pin To Net: NetName=STCP Pin=U5-12
+Added Pin To Net: NetName=GND Pin=U5-13
+Added Pin To Net: NetName=COLD Pin=U5-14
+Added Pin To Net: NetName=COL1 Pin=U5-15
+Added Pin To Net: NetName=V3-1 Pin=U5-16
+Added Pin To Net: NetName=COL10 Pin=U6-1
+Added Pin To Net: NetName=COL11 Pin=U6-2
+Added Pin To Net: NetName=COL12 Pin=U6-3
+Added Pin To Net: NetName=COL13 Pin=U6-4
+Added Pin To Net: NetName=COL14 Pin=U6-5
+Added Pin To Net: NetName=COL15 Pin=U6-6
+Added Pin To Net: NetName=COL16 Pin=U6-7
+Added Pin To Net: NetName=GND Pin=U6-8
+Added Pin To Net: NetName=NetU6_9 Pin=U6-9
+Added Pin To Net: NetName=V3-1 Pin=U6-10
+Added Pin To Net: NetName=SHCP Pin=U6-11
+Added Pin To Net: NetName=STCP Pin=U6-12
+Added Pin To Net: NetName=GND Pin=U6-13
+Added Pin To Net: NetName=NetU5_9 Pin=U6-14
+Added Pin To Net: NetName=COL9 Pin=U6-15
+Added Pin To Net: NetName=V3-1 Pin=U6-16
+Added Pin To Net: NetName=COL18 Pin=U7-1
+Added Pin To Net: NetName=COL19 Pin=U7-2
+Added Pin To Net: NetName=COL20 Pin=U7-3
+Added Pin To Net: NetName=COL21 Pin=U7-4
+Added Pin To Net: NetName=COL22 Pin=U7-5
+Added Pin To Net: NetName=COL23 Pin=U7-6
+Added Pin To Net: NetName=COL24 Pin=U7-7
+Added Pin To Net: NetName=GND Pin=U7-8
+Added Pin To Net: NetName=NetU7_9 Pin=U7-9
+Added Pin To Net: NetName=V3-2 Pin=U7-10
+Added Pin To Net: NetName=SHCP Pin=U7-11
+Added Pin To Net: NetName=STCP Pin=U7-12
+Added Pin To Net: NetName=GND Pin=U7-13
+Added Pin To Net: NetName=NetU6_9 Pin=U7-14
+Added Pin To Net: NetName=COL17 Pin=U7-15
+Added Pin To Net: NetName=V3-1 Pin=U7-16
+Added Pin To Net: NetName=COL26 Pin=U8-1
+Added Pin To Net: NetName=COL27 Pin=U8-2
+Added Pin To Net: NetName=COL28 Pin=U8-3
+Added Pin To Net: NetName=COL29 Pin=U8-4
+Added Pin To Net: NetName=COL30 Pin=U8-5
+Added Pin To Net: NetName=COL31 Pin=U8-6
+Added Pin To Net: NetName=COL32 Pin=U8-7
+Added Pin To Net: NetName=GND Pin=U8-8
+Added Pin To Net: NetName=V3-2 Pin=U8-10
+Added Pin To Net: NetName=SHCP Pin=U8-11
+Added Pin To Net: NetName=STCP Pin=U8-12
+Added Pin To Net: NetName=GND Pin=U8-13
+Added Pin To Net: NetName=NetU7_9 Pin=U8-14
+Added Pin To Net: NetName=COL25 Pin=U8-15
+Added Pin To Net: NetName=V3-1 Pin=U8-16
+Added Member To Class: ClassName=DS1302 Member=Component U5 M74HC595B1R
+Added Member To Class: ClassName=DS1302 Member=Component U6 M74HC595B1R
+Added Member To Class: ClassName=DS1302 Member=Component U7 M74HC595B1R
+Added Member To Class: ClassName=DS1302 Member=Component U8 M74HC595B1R
+Added Room: Name=DS1302

@@ -1,0 +1,71 @@
+Added Component: Designator=U1(DIP16)
+Added Component: Designator=U2(DIP16)
+Added Component: Designator=U3(DIP16)
+Added Component: Designator=U4(DIP16)
+Added Pin To Net: NetName=ROW7 Pin=U1-1
+Added Pin To Net: NetName=ROW6 Pin=U1-2
+Added Pin To Net: NetName=ROW5 Pin=U1-3
+Added Pin To Net: NetName=ROW4 Pin=U1-4
+Added Pin To Net: NetName=ROW3 Pin=U1-5
+Added Pin To Net: NetName=ROW2 Pin=U1-6
+Added Pin To Net: NetName=ROW1 Pin=U1-7
+Added Pin To Net: NetName=GND Pin=U1-8
+Added Pin To Net: NetName=NetU1_9 Pin=U1-9
+Added Pin To Net: NetName=V3-3 Pin=U1-10
+Added Pin To Net: NetName=SHCP Pin=U1-11
+Added Pin To Net: NetName=STCP Pin=U1-12
+Added Pin To Net: NetName=GND Pin=U1-13
+Added Pin To Net: NetName=ROWD Pin=U1-14
+Added Pin To Net: NetName=ROW8 Pin=U1-15
+Added Pin To Net: NetName=V3-2 Pin=U1-16
+Added Pin To Net: NetName=ROW10 Pin=U2-1
+Added Pin To Net: NetName=ROW11 Pin=U2-2
+Added Pin To Net: NetName=ROW12 Pin=U2-3
+Added Pin To Net: NetName=ROW13 Pin=U2-4
+Added Pin To Net: NetName=ROW14 Pin=U2-5
+Added Pin To Net: NetName=ROW15 Pin=U2-6
+Added Pin To Net: NetName=ROW16 Pin=U2-7
+Added Pin To Net: NetName=GND Pin=U2-8
+Added Pin To Net: NetName=NetU2_9 Pin=U2-9
+Added Pin To Net: NetName=V3-3 Pin=U2-10
+Added Pin To Net: NetName=SHCP Pin=U2-11
+Added Pin To Net: NetName=STCP Pin=U2-12
+Added Pin To Net: NetName=GND Pin=U2-13
+Added Pin To Net: NetName=NetU1_9 Pin=U2-14
+Added Pin To Net: NetName=ROW9 Pin=U2-15
+Added Pin To Net: NetName=V3-3 Pin=U2-16
+Added Pin To Net: NetName=ROW18 Pin=U3-1
+Added Pin To Net: NetName=ROW19 Pin=U3-2
+Added Pin To Net: NetName=ROW20 Pin=U3-3
+Added Pin To Net: NetName=ROW21 Pin=U3-4
+Added Pin To Net: NetName=ROW22 Pin=U3-5
+Added Pin To Net: NetName=ROW23 Pin=U3-6
+Added Pin To Net: NetName=ROW24 Pin=U3-7
+Added Pin To Net: NetName=GND Pin=U3-8
+Added Pin To Net: NetName=NetU3_9 Pin=U3-9
+Added Pin To Net: NetName=V3-4 Pin=U3-10
+Added Pin To Net: NetName=SHCP Pin=U3-11
+Added Pin To Net: NetName=STCP Pin=U3-12
+Added Pin To Net: NetName=GND Pin=U3-13
+Added Pin To Net: NetName=NetU2_9 Pin=U3-14
+Added Pin To Net: NetName=ROW17 Pin=U3-15
+Added Pin To Net: NetName=V3-4 Pin=U3-16
+Added Pin To Net: NetName=ROW26 Pin=U4-1
+Added Pin To Net: NetName=ROW27 Pin=U4-2
+Added Pin To Net: NetName=ROW28 Pin=U4-3
+Added Pin To Net: NetName=ROW29 Pin=U4-4
+Added Pin To Net: NetName=ROW30 Pin=U4-5
+Added Pin To Net: NetName=ROW31 Pin=U4-6
+Added Pin To Net: NetName=ROW32 Pin=U4-7
+Added Pin To Net: NetName=GND Pin=U4-8
+Added Pin To Net: NetName=V3-4 Pin=U4-10
+Added Pin To Net: NetName=SHCP Pin=U4-11
+Added Pin To Net: NetName=STCP Pin=U4-12
+Added Pin To Net: NetName=GND Pin=U4-13
+Added Pin To Net: NetName=NetU3_9 Pin=U4-14
+Added Pin To Net: NetName=ROW25 Pin=U4-15
+Added Pin To Net: NetName=V3-5 Pin=U4-16
+Added Member To Class: ClassName=DS1302 Member=Component U1 M74HC595B1R
+Added Member To Class: ClassName=DS1302 Member=Component U2 M74HC595B1R
+Added Member To Class: ClassName=DS1302 Member=Component U3 M74HC595B1R
+Added Member To Class: ClassName=DS1302 Member=Component U4 M74HC595B1R

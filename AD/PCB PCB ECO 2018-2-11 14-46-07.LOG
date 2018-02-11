@@ -1,0 +1,8 @@
+Added Component: Designator=1117-2(1117)
+Added Component: Designator=1117-3(1117)
+Added Component: Designator=1117-4(1117)
+Added Component: Designator=1117-5(1117)
+Added Member To Class: ClassName=DS1302 Member=Component 1117-2 POW-2
+Added Member To Class: ClassName=DS1302 Member=Component 1117-3 POW-3
+Added Member To Class: ClassName=DS1302 Member=Component 1117-4 POW-4
+Added Member To Class: ClassName=DS1302 Member=Component 1117-5 POW-5

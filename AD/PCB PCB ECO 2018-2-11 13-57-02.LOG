@@ -1,0 +1,138 @@
+Added Component: Designator=C1(C1210)
+Added Component: Designator=C2(C1210)
+Added Component: Designator=C3(0402)
+Added Component: Designator=C4(0402)
+Added Component: Designator=C5(0402)
+Added Component: Designator=C6(0402)
+Added Component: Designator=C7(0402)
+Added Component: Designator=C8(0402)
+Added Component: Designator=STC15F408AS(DIP16)
+Added Component: Designator=U9(DIP8)
+Added Component: Designator=Y1(R38)
+Added Net: Name=COL1
+Added Net: Name=COL2
+Added Net: Name=COL3
+Added Net: Name=COL4
+Added Net: Name=COL5
+Added Net: Name=COL6
+Added Net: Name=COL7
+Added Net: Name=COL8
+Added Net: Name=COL9
+Added Net: Name=COL10
+Added Net: Name=COL11
+Added Net: Name=COL12
+Added Net: Name=COL13
+Added Net: Name=COL14
+Added Net: Name=COL15
+Added Net: Name=COL16
+Added Net: Name=COL17
+Added Net: Name=COL18
+Added Net: Name=COL19
+Added Net: Name=COL20
+Added Net: Name=COL21
+Added Net: Name=COL22
+Added Net: Name=COL23
+Added Net: Name=COL24
+Added Net: Name=COL25
+Added Net: Name=COL26
+Added Net: Name=COL27
+Added Net: Name=COL28
+Added Net: Name=COL29
+Added Net: Name=COL30
+Added Net: Name=COL31
+Added Net: Name=COL32
+Added Pin To Net: NetName=COLD Pin=STC15F408AS-12
+Added Net: Name=COLD
+Added Pin To Net: NetName=COLUMNBUTTON Pin=STC15F408AS-14
+Added Net: Name=COLUMNBUTTON
+Added Pin To Net: NetName=DS1302CLK Pin=STC15F408AS-2
+Added Pin To Net: NetName=DS1302CLK Pin=U9-7
+Added Net: Name=DS1302CLK
+Added Pin To Net: NetName=DS1302IO Pin=STC15F408AS-3
+Added Pin To Net: NetName=DS1302IO Pin=U9-6
+Added Net: Name=DS1302IO
+Added Pin To Net: NetName=DS1302RST Pin=STC15F408AS-1
+Added Pin To Net: NetName=DS1302RST Pin=U9-5
+Added Net: Name=DS1302RST
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=GND Pin=C2-1
+Added Pin To Net: NetName=GND Pin=C3-2
+Added Pin To Net: NetName=GND Pin=C4-2
+Added Pin To Net: NetName=GND Pin=C5-2
+Added Pin To Net: NetName=GND Pin=C6-2
+Added Pin To Net: NetName=GND Pin=C7-2
+Added Pin To Net: NetName=GND Pin=C8-2
+Added Pin To Net: NetName=GND Pin=STC15F408AS-8
+Added Pin To Net: NetName=GND Pin=U9-4
+Added Net: Name=GND
+Added Pin To Net: NetName=NetC1_2 Pin=C1-2
+Added Pin To Net: NetName=NetC1_2 Pin=U9-2
+Added Pin To Net: NetName=NetC1_2 Pin=Y1-2
+Added Net: Name=NetC1_2
+Added Pin To Net: NetName=NetC2_2 Pin=C2-2
+Added Pin To Net: NetName=NetC2_2 Pin=U9-3
+Added Pin To Net: NetName=NetC2_2 Pin=Y1-1
+Added Net: Name=NetC2_2
+Added Net: Name=NetU1_9
+Added Net: Name=NetU2_9
+Added Net: Name=NetU3_9
+Added Net: Name=NetU5_9
+Added Net: Name=NetU6_9
+Added Net: Name=NetU7_9
+Added Net: Name=ROW1
+Added Net: Name=ROW2
+Added Net: Name=ROW3
+Added Net: Name=ROW4
+Added Net: Name=ROW5
+Added Net: Name=ROW6
+Added Net: Name=ROW7
+Added Net: Name=ROW8
+Added Net: Name=ROW9
+Added Net: Name=ROW10
+Added Net: Name=ROW11
+Added Net: Name=ROW12
+Added Net: Name=ROW13
+Added Net: Name=ROW14
+Added Net: Name=ROW15
+Added Net: Name=ROW16
+Added Net: Name=ROW17
+Added Net: Name=ROW18
+Added Net: Name=ROW19
+Added Net: Name=ROW20
+Added Net: Name=ROW21
+Added Net: Name=ROW22
+Added Net: Name=ROW23
+Added Net: Name=ROW24
+Added Net: Name=ROW25
+Added Net: Name=ROW26
+Added Net: Name=ROW27
+Added Net: Name=ROW28
+Added Net: Name=ROW29
+Added Net: Name=ROW30
+Added Net: Name=ROW31
+Added Net: Name=ROW32
+Added Pin To Net: NetName=ROWBUTTON Pin=STC15F408AS-13
+Added Net: Name=ROWBUTTON
+Added Pin To Net: NetName=ROWD Pin=STC15F408AS-11
+Added Net: Name=ROWD
+Added Pin To Net: NetName=SHCP Pin=STC15F408AS-9
+Added Net: Name=SHCP
+Added Pin To Net: NetName=STCP Pin=STC15F408AS-10
+Added Net: Name=STCP
+Added Pin To Net: NetName=V3-1 Pin=C4-1
+Added Net: Name=V3-1
+Added Pin To Net: NetName=V3-2 Pin=C5-1
+Added Net: Name=V3-2
+Added Pin To Net: NetName=V3-3 Pin=C6-1
+Added Net: Name=V3-3
+Added Pin To Net: NetName=V3-4 Pin=C7-1
+Added Net: Name=V3-4
+Added Pin To Net: NetName=V3-5 Pin=C8-1
+Added Net: Name=V3-5
+Added Pin To Net: NetName=VCC Pin=C3-1
+Added Pin To Net: NetName=VCC Pin=STC15F408AS-6
+Added Pin To Net: NetName=VCC Pin=U9-1
+Added Pin To Net: NetName=VCC Pin=U9-8
+Added Net: Name=VCC
+Added Class: Name=DS1302
+Added Room: Name=DS1302
