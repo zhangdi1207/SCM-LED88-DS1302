@@ -1,0 +1,10 @@
+Added Component: Designator=U9(DIP-8)
+Added Pin To Net: NetName=VCC Pin=U9-1
+Added Pin To Net: NetName=NetC1_2 Pin=U9-2
+Added Pin To Net: NetName=NetC2_2 Pin=U9-3
+Added Pin To Net: NetName=GND Pin=U9-4
+Added Pin To Net: NetName=DS1302RST Pin=U9-5
+Added Pin To Net: NetName=DS1302IO Pin=U9-6
+Added Pin To Net: NetName=DS1302CLK Pin=U9-7
+Added Pin To Net: NetName=VCC Pin=U9-8
+Added Member To Class: ClassName=DS1302 Member=Component U9 DS1302N

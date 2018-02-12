@@ -1,0 +1,13 @@
+Added Component: Designator=SCM(SOP16)
+Added Pin To Net: NetName=DS1302RST Pin=SCM-1
+Added Pin To Net: NetName=DS1302CLK Pin=SCM-2
+Added Pin To Net: NetName=DS1302IO Pin=SCM-3
+Added Pin To Net: NetName=VCC Pin=SCM-6
+Added Pin To Net: NetName=GND Pin=SCM-8
+Added Pin To Net: NetName=SHCP Pin=SCM-9
+Added Pin To Net: NetName=STCP Pin=SCM-10
+Added Pin To Net: NetName=ROWD Pin=SCM-11
+Added Pin To Net: NetName=COLD Pin=SCM-12
+Added Pin To Net: NetName=ROWBUTTON Pin=SCM-13
+Added Pin To Net: NetName=COLUMNBUTTON Pin=SCM-14
+Added Member To Class: ClassName=DS1302 Member=Component SCM STC15W401AS_SOP16_DIP16

@@ -1,0 +1,3 @@
+Change Component Footprint: Designator=SCM Old Footprint=SOP16 New Footprint=DIP16
+Added Class: Name=BUSALL[0..1]
+Added Room: Name=DS1302

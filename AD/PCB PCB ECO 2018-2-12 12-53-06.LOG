@@ -1,0 +1,13 @@
+Added Component: Designator=STC15F408AS(SOP20)
+Added Pin To Net: NetName=DS1302RST Pin=STC15F408AS-1
+Added Pin To Net: NetName=DS1302CLK Pin=STC15F408AS-2
+Added Pin To Net: NetName=DS1302IO Pin=STC15F408AS-3
+Added Pin To Net: NetName=VCC Pin=STC15F408AS-8
+Added Pin To Net: NetName=GND Pin=STC15F408AS-10
+Added Pin To Net: NetName=SHCP Pin=STC15F408AS-11
+Added Pin To Net: NetName=STCP Pin=STC15F408AS-12
+Added Pin To Net: NetName=ROWD Pin=STC15F408AS-13
+Added Pin To Net: NetName=COLD Pin=STC15F408AS-14
+Added Pin To Net: NetName=ROWBUTTON Pin=STC15F408AS-17
+Added Pin To Net: NetName=COLUMNBUTTON Pin=STC15F408AS-18
+Added Member To Class: ClassName=DS1302 Member=Component STC15F408AS SCM
